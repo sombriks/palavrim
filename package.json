@@ -1,0 +1,46 @@
+{
+  "name": "palavrim",
+  "type": "module",
+  "version": "0.1.0",
+  "description": "just another wordle clone",
+  "main": "dist/index.js",
+  "scripts": {
+    "build:client": "webpack",
+    "dev:client": "webpack serve --open",
+    "dev:server": "nodemon -r dotenv-flow/config src/server/main.js",
+    "dev": "concurrently --kill-others 'npm run dev:client' 'npm run dev:server'",
+    "start": "node src/server/main.js",
+    "prestart": "npm run build:client"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sombriks/palavrim.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sombriks/palavrim/issues"
+  },
+  "homepage": "https://github.com/sombriks/palavrim#readme",
+  "dependencies": {
+    "express": "^4.17.2",
+    "vue": "^3.2.29"
+  },
+  "devDependencies": {
+    "@vue/compiler-sfc": "^3.2.29",
+    "concurrently": "^7.0.0",
+    "dotenv-flow": "^3.2.0",
+    "html-webpack-plugin": "^5.5.0",
+    "nodemon": "^2.0.15",
+    "vue-loader": "^17.0.0",
+    "webpack": "^5.68.0",
+    "webpack-cli": "^4.9.2",
+    "webpack-dev-server": "^4.7.4"
+  },
+  "nodemonConfig": {
+    "ignore": [
+      "src/client/*"
+    ]
+  }
+}
