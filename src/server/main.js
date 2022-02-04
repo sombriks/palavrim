@@ -1,7 +1,9 @@
 import express from "express";
+import morgan from "morgan";
 
 const app = express();
 
+app.use(morgan("common"))
 app.use(express.static(process.env.STATIC_FOLDER));
 
 app.get("/", (req, res) => {

@@ -10,7 +10,7 @@
     "dev:client": "webpack serve --open",
     "dev:server": "nodemon -r dotenv-flow/config src/server/main.js",
     "dev": "cross-env NODE_ENV=development concurrently --kill-others 'npm run dev:client' 'npm run dev:server'",
-    "start": "node src/server/main.js",
+    "start": "node -r dotenv-flow/config src/server/main.js",
     "prestart": "npm run build:client"
   },
   "repository": {
@@ -26,6 +26,10 @@
   "homepage": "https://github.com/sombriks/palavrim#readme",
   "dependencies": {
     "express": "^4.17.2",
+    "knex": "^1.0.2",
+    "morgan": "^1.10.0",
+    "pg": "^8.7.1",
+    "sqlite3": "^5.0.2",
     "vue": "^3.2.29"
   },
   "devDependencies": {
