@@ -2,8 +2,11 @@ import express from "express";
 
 const app = express();
 
-app.get("/",(req,res)=> res.send("hello"))
+app.use(express.static(process.env.STATIC_FOLDER));
+
+app.get("/", (req, res) => {
+  res.send("hello " + process.env.NODE_ENV);
+  console.log("hello " + new Date() + " " + process.env.NODE_ENV);
+});
 
 app.listen(3000);
-
-console.log(process.env.NODE_ENV)

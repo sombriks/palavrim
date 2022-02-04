@@ -6,9 +6,10 @@
   "main": "dist/index.js",
   "scripts": {
     "build:client": "webpack",
+    "build": "npm run build:client",
     "dev:client": "webpack serve --open",
     "dev:server": "nodemon -r dotenv-flow/config src/server/main.js",
-    "dev": "concurrently --kill-others 'npm run dev:client' 'npm run dev:server'",
+    "dev": "cross-env NODE_ENV=development concurrently --kill-others 'npm run dev:client' 'npm run dev:server'",
     "start": "node src/server/main.js",
     "prestart": "npm run build:client"
   },
@@ -30,6 +31,8 @@
   "devDependencies": {
     "@vue/compiler-sfc": "^3.2.29",
     "concurrently": "^7.0.0",
+    "copy-webpack-plugin": "^10.2.4",
+    "cross-env": "^7.0.3",
     "dotenv-flow": "^3.2.0",
     "html-webpack-plugin": "^5.5.0",
     "nodemon": "^2.0.15",

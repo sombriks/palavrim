@@ -1,30 +1,40 @@
-const path = require('path');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const { VueLoaderPlugin } = require('vue-loader')
+const path = require("path");
+require("dotenv").config();
 
+const HtmlWebpackPlugin = require("html-webpack-plugin");
+const CopyPlugin = require("copy-webpack-plugin");
+const { VueLoaderPlugin } = require("vue-loader");
 
 module.exports = {
-  mode:process.env.NODE_ENV,
-  entry: './src/client/main.js',
+  mode: process.env.NODE_ENV,
+  entry: "./src/client/main.js",
   output: {
-    filename: 'bundle.js',
-    path: path.resolve(__dirname, 'dist'),
+    filename: "bundle.[chunkhash].js",
+    path: path.resolve(__dirname, process.env.STATIC_FOLDER),
+    clean: true,
   },
   plugins: [
     new HtmlWebpackPlugin({
-      title: 'Development',
+      title: "Development",
+      template: "src/client/index.ejs"
     }),
-    new VueLoaderPlugin()
+    new CopyPlugin({
+      patterns: [{ from: "public" }],
+    }),
+    new VueLoaderPlugin(),
   ],
   module: {
     rules: [
       {
         test: /\.vue$/,
-        loader: 'vue-loader'
-      }
-    ]
+        loader: "vue-loader",
+      },
+    ],
   },
   devServer: {
-    static: './dist'
-  }
+    static: {
+      directory: path.join(__dirname, "public"),
+    },
+    hot: true,
+  },
 };
