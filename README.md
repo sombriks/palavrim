@@ -24,7 +24,7 @@ npm run dev
 pra criar um migrate:
 
 ```bash
-npx knex migrate make nome_do_novo_migrate
+npx knex --knexfile knexfile.cjs migrate:make nome_do_novo_migrate
 ```
 
 ## curiosidades
