@@ -6,26 +6,20 @@
 module.exports = {
 
   development: {
-    client: 'sqlite3',
-    connection: {
-      filename: './palavrim.db'
-    }
-  },
-
-  production: {
-    client: 'postgresql',
+    client: 'mysql2',
     connection: {
       database: 'palavrim',
-      user:     'username',
-      password: 'password'
+      user:     'root',
+      password: 'root'
     },
     pool: {
       min: 2,
       max: 10
     },
     migrations: {
-      tableName: 'knex_migrations'
-    }
-  }
+      tableName: 'knex_migrations',
+      directory: './src/server/migrations'
+    },
+  },
 
 };

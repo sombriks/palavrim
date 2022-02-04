@@ -28,8 +28,8 @@
     "express": "^4.17.2",
     "knex": "^1.0.2",
     "morgan": "^1.10.0",
+    "mysql2": "^2.3.3",
     "pg": "^8.7.1",
-    "sqlite3": "^5.0.2",
     "vue": "^3.2.29"
   },
   "devDependencies": {

@@ -13,6 +13,6 @@ app.get("/", (req, res) => {
   console.log("hello " + new Date() + " " + process.env.NODE_ENV);
 });
 
-knex.migrate().then((_) => {
+knex.migrate.latest().then((_) => {
   app.listen(3000);
 });
