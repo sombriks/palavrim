@@ -25,6 +25,7 @@
   },
   "homepage": "https://github.com/sombriks/palavrim#readme",
   "dependencies": {
+    "@vscode/sqlite3": "^5.0.7",
     "express": "^4.17.2",
     "knex": "^1.0.2",
     "morgan": "^1.10.0",
