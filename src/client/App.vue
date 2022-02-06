@@ -5,6 +5,5 @@ const env = process.env.NODE_ENV;
 </script>
 
 <template>
-  <h1>Hellooo {{ name }}</h1>
-  <p>Hi aqui é {{ env }}</p>
+  <router-view></router-view>
 </template>
