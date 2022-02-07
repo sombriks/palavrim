@@ -5,3 +5,5 @@ const api = axios.create({
 });
 
 export const saveUser = (user) => api.post("/user", user);
+
+export const getGames = ({ data: { uid } }) => api.get("/games?uid=" + uid);

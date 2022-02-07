@@ -1,18 +1,28 @@
 import express from "express";
 import morgan from "morgan";
+import cors from "cors";
+import bodyParser from "body-parser";
 
 import { knex } from "./config/db.js";
 
+import { users } from "./routes/users.js";
+import { games } from "./routes/games.js";
+
 const app = express();
 
+app.use(cors());
 app.use(morgan("common"));
+app.use(bodyParser.json());
+
+app.use(users);
+app.use(games);
+
 app.use(express.static(process.env.STATIC_FOLDER));
 
-app.get("/", (req, res) => {
-  res.send("hello " + process.env.NODE_ENV);
-  console.log("hello " + new Date() + " " + process.env.NODE_ENV);
-});
+const PORT = process.env.PORT || 3000;
 
-knex.migrate.latest().then((_) => {
-  app.listen(3000);
+console.log("running pending migrations");
+knex.migrate.latest().then(() => {
+  console.log("starting service");
+  app.listen(PORT);
 });

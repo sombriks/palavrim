@@ -2,7 +2,7 @@ import { createApp } from "vue";
 import { createRouter, createWebHashHistory } from "vue-router";
 
 import App from "./App.vue";
-import { routes } from "./routes.js";
+import { routes } from "./config/routes.js";
 
 console.log(process.env.API_BASE_URL);
 
