@@ -26,11 +26,14 @@
   "homepage": "https://github.com/sombriks/palavrim#readme",
   "dependencies": {
     "@vscode/sqlite3": "^5.0.7",
+    "axios": "^0.25.0",
+    "dexie": "^3.2.0",
     "express": "^4.17.2",
     "knex": "^1.0.2",
     "morgan": "^1.10.0",
     "mysql2": "^2.3.3",
     "pg": "^8.7.1",
+    "uid": "^2.0.0",
     "vue": "^3.2.29",
     "vue-router": "^4.0.12"
   },

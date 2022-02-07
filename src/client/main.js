@@ -4,6 +4,8 @@ import { createRouter, createWebHashHistory } from "vue-router";
 import App from "./App.vue";
 import { routes } from "./routes.js";
 
+console.log(process.env.API_BASE_URL);
+
 const app = createApp(App);
 
 const router = createRouter({

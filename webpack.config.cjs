@@ -1,12 +1,14 @@
+require("dotenv-flow").config();
 const path = require("path");
-require("dotenv").config();
 
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const CopyPlugin = require("copy-webpack-plugin");
 const { VueLoaderPlugin } = require("vue-loader");
+const { EnvironmentPlugin } = require("webpack");
 
 module.exports = {
   mode: process.env.NODE_ENV,
+  devtool: process.env.DEVTOOL,
   entry: "./src/client/main.js",
   output: {
     filename: "bundle.[chunkhash].js",
@@ -14,9 +16,10 @@ module.exports = {
     clean: true,
   },
   plugins: [
+    new EnvironmentPlugin(["NODE_ENV", "API_BASE_URL"]),
     new HtmlWebpackPlugin({
       title: "Development",
-      template: "src/client/index.ejs"
+      template: "src/client/index.ejs",
     }),
     new CopyPlugin({
       patterns: [{ from: "public" }],

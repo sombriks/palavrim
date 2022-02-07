@@ -1,7 +1,9 @@
 <script setup>
 import { ref } from "vue";
-const name = ref("world!!");
-const env = process.env.NODE_ENV;
+import { checkMyself } from "./db.js";
+import { saveUser } from "./api.js";
+
+checkMyself().then(saveUser);
 </script>
 
 <template>
