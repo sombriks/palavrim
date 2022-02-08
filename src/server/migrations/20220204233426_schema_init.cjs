@@ -13,6 +13,7 @@ exports.up = function (knex) {
       t.increments("id");
       t.string("uid").unique().notNullable();
       t.integer("user_id")
+        .unsigned()
         .notNullable()
         .references("user.id")
         .onDelete("cascade");

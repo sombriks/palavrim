@@ -1,9 +1,8 @@
 <script setup>
-import { ref } from "vue";
 import { checkMyself, syncGames } from "./config/db.js";
-import { saveUser, getGames } from "./config/api.js";
+import { saveUser, getGamesFromUser } from "./config/api.js";
 
-checkMyself().then(saveUser).then(getGames).then(syncGames);
+checkMyself().then(saveUser).then(getGamesFromUser).then(syncGames);
 </script>
 
 <template>

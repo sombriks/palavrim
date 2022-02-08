@@ -17,8 +17,16 @@ export const checkMyself = async () => {
   return await db.users.where("uid").equals(uid).first();
 };
 
+export const findMe = async () =>
+  await db.users.filter((u) => u.myself).first();
+
 export const syncGames = async (ret) => {
-  console.log(ret.data);
+  await db.games.bulkPut(ret.data);
+};
+
+export const saveGame = async ({ data }) => {
+  const uid = await db.games.add(data);
+  return await db.games.where("uid").equals(uid).first();
 };
 
 // migrations

@@ -10,6 +10,7 @@
     "dev:client": "webpack serve --open",
     "dev:server": "nodemon -r dotenv-flow/config src/server/main.js",
     "dev": "cross-env NODE_ENV=development concurrently --kill-others 'npm run dev:client' 'npm run dev:server'",
+    "dev:staging": "cross-env NODE_ENV=staging concurrently --kill-others 'npm run dev:client' 'npm run dev:server'",
     "start": "node -r dotenv-flow/config src/server/main.js",
     "prestart": "npm run build:client"
   },

@@ -1,5 +1,5 @@
-import Create from "../Create.vue";
-import Play from "../Play.vue";
+import Create from "../pages/Create.vue";
+import Play from "../pages/Play.vue";
 
 export const routes = [
   { path: "/", component: Create },

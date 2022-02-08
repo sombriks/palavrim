@@ -6,8 +6,14 @@ const CopyPlugin = require("copy-webpack-plugin");
 const { VueLoaderPlugin } = require("vue-loader");
 const { EnvironmentPlugin } = require("webpack");
 
+const client_env = {
+  production: "production",
+  development: "development",
+  staging: "development",
+};
+
 module.exports = {
-  mode: process.env.NODE_ENV,
+  mode: client_env[process.env.NODE_ENV],
   devtool: process.env.DEVTOOL,
   entry: "./src/client/main.js",
   output: {
