@@ -5,7 +5,8 @@ jogo de palavras
 ## requisitos
 
 - node 14
-- ???
+- @vscode/sqlite3
+- mysql8 || mariadb10
 
 ## construindo e desenvolvendo
 
@@ -19,6 +20,12 @@ pra desenvolvimento:
 
 ```bash
 npm run dev
+```
+
+pra testar no mysql:
+
+```bash
+npm run dev:staging
 ```
 
 pra criar um migrate:
