@@ -1,5 +1,6 @@
 <script setup>
-import { defineProps } from 'vue'
-
+import { defineProps } from "vue";
 </script>
-<template>keyboard</template>
+<template>
+  <div></div>
+</template>

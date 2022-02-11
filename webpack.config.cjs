@@ -4,7 +4,7 @@ const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const CopyPlugin = require("copy-webpack-plugin");
 const { VueLoaderPlugin } = require("vue-loader");
-const { EnvironmentPlugin } = require("webpack");
+const { EnvironmentPlugin, DefinePlugin } = require("webpack");
 
 const client_env = {
   production: "production",
@@ -23,6 +23,10 @@ module.exports = {
   },
   plugins: [
     new EnvironmentPlugin(["NODE_ENV", "API_BASE_URL"]),
+    new DefinePlugin({
+      __VUE_OPTIONS_API__: true,
+      __VUE_PROD_DEVTOOLS__: false,
+    }),
     new HtmlWebpackPlugin({
       title: "Development",
       template: "src/client/index.ejs",
@@ -37,6 +41,26 @@ module.exports = {
       {
         test: /\.vue$/,
         loader: "vue-loader",
+      },
+      {
+        test: /\.css$/,
+        oneOf: [
+          {
+            resourceQuery: /module/,
+            use: [
+              "vue-style-loader",
+              {
+                loader: "css-loader",
+                options: {
+                  modules: true,
+                },
+              },
+            ],
+          },
+          {
+            use: ["vue-style-loader", "css-loader"],
+          },
+        ],
       },
     ],
   },
