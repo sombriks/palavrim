@@ -30,12 +30,8 @@ onMounted(async () => {
 });
 </script>
 <template>
-  <br />
   <LineResult v-for="res in results" :result="res"></LineResult>
-  <br />
   <GuessLine :word="letters"></GuessLine>
-  <br />
   <Keyboard :word="letters"></Keyboard>
-  <br />
   <router-link to="/create">Criar</router-link>
 </template>

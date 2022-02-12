@@ -11,7 +11,7 @@ const { letter } = defineProps({
 .letter {
   min-width: 3em;
   min-height: 3em;
-  margin: 1em;
+  margin: 0.25em;
   border: solid 0.5em grey;
   border-radius: 1em;
 }

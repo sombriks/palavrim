@@ -1,11 +1,15 @@
 <script setup>
-import { defineProps } from "vue";
+import { defineProps, onMounted, onUnmounted } from "vue";
 import Letter from "./Letter.vue";
 
-const { word } = defineProps({
-  word: Array,
-});
-console.log(word);
+const { word } = defineProps(["word"]);
+
+const onKey = (e) => {
+  console.log(e);
+};
+
+onMounted(() => window.addEventListener("keydown", onKey));
+onUnmounted(() => window.removeEventListener("keydown", onKey));
 </script>
 <template>
   <div :class="$style.line">
