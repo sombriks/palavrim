@@ -4,7 +4,7 @@ const { char, index } = defineProps(["char", "guess", "index", "mode"]);
 </script>
 <template>
   <div :class="[$style.letter, $style[mode]]">
-    {{ guess[index] }}
+    {{ char }}
   </div>
 </template>
 <style module>

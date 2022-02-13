@@ -15,6 +15,7 @@ const onKey = (e) => {
   // console.log(e)
   if (alphabet.enter == e.key) {
     emit("enter-guess", myGuess.value);
+    myGuess.value=""
   } else if (alphabet.backspace == e.key) {
     const novo = myGuess.value.split("");
     novo.pop();
@@ -34,7 +35,7 @@ onUnmounted(() => window.removeEventListener("keydown", onKey));
 <template>
   <div :class="$style.line">
     <Letter
-      :char="letter"
+      :char="myGuess[i]"
       :guess="myGuess"
       :index="i"
       mode="guess"

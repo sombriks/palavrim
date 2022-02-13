@@ -17,6 +17,8 @@ const criar = (_) => {
 </script>
 <template>
   <h1>Dê uma palavra para desafiar os outros</h1>
-  <input type="text" v-model="word" />
-  <button @click="criar">Criar</button>
+  <form @submit.prevent="criar">
+    <input type="text" v-model="word" />
+    <button type="submit">Criar</button>
+  </form>
 </template>

@@ -17,10 +17,13 @@ onMounted(async () => {
   const ret = await getGame(route.params.game);
   game.value = ret.data;
 });
+const myGuess = (guess) => {
+  results.value.push({ guess });
+};
 </script>
 <template>
-  <LineResult v-for="res in results" :result="res"></LineResult>
-  <GuessLine :game="game" @enter-guess="(e) => console.log(e)"></GuessLine>
+  <LineResult :game="game" v-for="res in results" :result="res"></LineResult>
+  <GuessLine :game="game" @enter-guess="myGuess"></GuessLine>
   <Keyboard :game="game"></Keyboard>
   <router-link to="/create">Criar</router-link>
 </template>
