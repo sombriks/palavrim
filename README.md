@@ -61,7 +61,7 @@ oferecido por razões óbvias. heroku, por exemplo, pra publicar direitinho tem
 que garantir um `npm start` que funcione.
 
 se o seu projeto tem a divisão forte entre _front_ e _back_, é provável que
-sejam dois projetos npm distintos. 
+sejam dois projetos npm distintos.
 
 e aí boa sorte em fazer o heroku disparar um processo decente de build.
 

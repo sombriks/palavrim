@@ -12,26 +12,15 @@ const router = useRouter();
 const route = useRoute();
 
 const game = ref({});
-const letters = ref([
-  { v: "p" },
-  { v: "a" },
-  { v: "l" },
-  { v: "a" },
-  { v: "v" },
-  { v: "r" },
-  { v: "i" },
-  { v: "m" },
-]);
 const results = ref([]);
 onMounted(async () => {
   const ret = await getGame(route.params.game);
   game.value = ret.data;
-  letters.value = game.value.word.split("").map((l) => ({ v: l }));
 });
 </script>
 <template>
   <LineResult v-for="res in results" :result="res"></LineResult>
-  <GuessLine :word="letters"></GuessLine>
-  <Keyboard :word="letters"></Keyboard>
+  <GuessLine :game="game" @enter-guess="(e) => console.log(e)"></GuessLine>
+  <Keyboard :game="game"></Keyboard>
   <router-link to="/create">Criar</router-link>
 </template>

@@ -1,6 +1,6 @@
 <script setup>
 import { defineProps } from "vue";
-const { word } = defineProps(["word"]);
+const { game } = defineProps(["game"]);
 </script>
 <template>
   <div></div>
