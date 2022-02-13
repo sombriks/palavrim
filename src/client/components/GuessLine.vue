@@ -25,7 +25,6 @@ const onKey = (e) => {
   } else if (alphabet.letters.find((l) => l == e.key)) {
     myGuess.value += e.key.toUpperCase();
   }
-  console.log(e)
 };
 
 onMounted(() => window.addEventListener("keydown", onKey));

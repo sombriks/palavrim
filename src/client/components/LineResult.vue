@@ -1,18 +1,38 @@
 <script setup>
-import { ref, defineProps, defineEmits, onMounted, onUnmounted } from "vue";
+import {
+  ref,
+  defineProps,
+  defineEmits,
+  onMounted,
+  onUnmounted,
+  computed,
+} from "vue";
 
 import Letter from "./Letter.vue";
 
 const { game, result } = defineProps(["game", "result"]);
+
+const letterMode = computed(() => {
+  const letters = game.word.split("").map((e) => e.toUpperCase());
+  const guesses = result.guess.split("").map((e) => e.toUpperCase());
+  const modes = [];
+  for (let i = 0; i < letters.length; i++) {
+    if (letters[i] == guesses[i]) modes.push("match");
+    else if (letters.find((l) => l == guesses[i])) modes.push("exists");
+    else modes.push("none");
+  }
+  console.log(modes);
+  return modes;
+});
 </script>
 <template>
-  <div>
+  <div :class="$style.line">
     <Letter
-      v-for="(char, i) in result"
+      v-for="(char, i) in result.guess"
       :char="char"
       :guess="result"
       :index="i"
-      mode="guess"
+      :mode="letterMode[i]"
     ></Letter>
   </div>
 </template>

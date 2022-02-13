@@ -15,8 +15,30 @@ const { char, index } = defineProps(["char", "guess", "index", "mode"]);
   border-radius: 0.5em;
   text-align: center;
   vertical-align: middle;
+  font-family: 'Courier New', Courier, monospace;
+  font-weight: bolder;
 }
-.guess {
+.guess,
+.match,
+.exists,
+.none {
+  color: gray;
   border: solid 0.25em gray;
+  background-color: lightgray;
+}
+.match {
+  color: green;
+  border-color: green;
+  background-color: lightgreen;
+}
+.exists {
+  color: orange;
+  border-color: orange;
+  background-color: lightgoldenrodyellow;
+}
+.none {
+  color: brown;
+  border-color: brown;
+  background-color: lightcoral;
 }
 </style>
