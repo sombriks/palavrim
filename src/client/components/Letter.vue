@@ -1,10 +1,10 @@
 <script setup>
 import { defineProps } from "vue";
-const { char, index } = defineProps(["char", "guess", "index", "mode"]);
+const { guess, index, mode } = defineProps(["guess", "index", "mode"]);
 </script>
 <template>
   <div :class="[$style.letter, $style[mode]]">
-    {{ char }}
+    {{ guess && guess[index] || "" }}
   </div>
 </template>
 <style module>

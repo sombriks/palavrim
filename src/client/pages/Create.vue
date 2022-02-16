@@ -16,12 +16,28 @@ const criar = (_) => {
     .then(saveGame)
     .then((game) => router.push(`/play/${game.uid}`));
 };
+const onLetter = (l) => (word.value += l);
 </script>
 <template>
   <h1>Dê uma palavra para desafiar os outros</h1>
-  <form @submit.prevent="criar">
-    <input type="text" v-model="word" />
-    <button type="submit">Criar</button>
-  </form>
-  <Keyboard></Keyboard>
+  <div :class="$style['new-word']">
+    <input type="text" readonly v-model="word" />
+  </div>
+  <div :class="$style['new-word']">
+    <Keyboard @new-letter="onLetter" v-model="word" @enter="criar"></Keyboard>
+  </div>
 </template>
+<style module>
+.new-word {
+  display: flex;
+  justify-content: center;
+  margin: 0.2em;
+}
+.new-word > input[type="text"] {
+  width: 50%;
+  align-items: center;
+  font-size: xx-large;
+  padding: 0.1em;
+  font-family: "Courier New", Courier, monospace;
+}
+</style>

@@ -1,21 +1,29 @@
 <script setup>
-import { ref, defineProps, defineEmits, onMounted, onUnmounted } from "vue";
+import {
+  ref,
+  toRef,
+  defineProps,
+  defineEmits,
+  onMounted,
+  onUnmounted,
+  watch,
+  getCurrentInstance,
+} from "vue";
 
 import * as alphabet from "../config/alphabet.js";
 
 import Letter from "./Letter.vue";
 
-const { game } = defineProps({
-  game: Object,
-});
-const emit = defineEmits(["enter-guess"]);
-const myGuess = ref("");
+const props = defineProps(["game", "modelValue"]);
+const { game, modelValue } = props;
+const emit = defineEmits(["enter-guess", "update:modelValue"]);
+const myGuess = toRef(props, "modelValue");
 
 const onKey = (e) => {
   // console.log(e)
   if (alphabet.enter == e.key) {
     emit("enter-guess", myGuess.value);
-    myGuess.value=""
+    myGuess.value = "";
   } else if (alphabet.backspace == e.key) {
     const novo = myGuess.value.split("");
     novo.pop();
@@ -27,14 +35,13 @@ const onKey = (e) => {
   }
 };
 
-onMounted(() => window.addEventListener("keydown", onKey));
-onUnmounted(() => window.removeEventListener("keydown", onKey));
+// onMounted(() => window.addEventListener("keydown", onKey));
+// onUnmounted(() => window.removeEventListener("keydown", onKey));
 </script>
 
 <template>
   <div :class="$style.line">
     <Letter
-      :char="myGuess[i]"
       :guess="myGuess"
       :index="i"
       mode="guess"
