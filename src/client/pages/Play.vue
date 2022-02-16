@@ -24,6 +24,6 @@ const myGuess = (guess) => {
 <template>
   <LineResult :game="game" v-for="res in results" :result="res"></LineResult>
   <GuessLine :game="game" @enter-guess="myGuess"></GuessLine>
-  <Keyboard :game="game"></Keyboard>
+  <Keyboard :game="game" :results="results"></Keyboard>
   <router-link to="/create">Criar</router-link>
 </template>

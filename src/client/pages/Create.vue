@@ -5,6 +5,8 @@ import { useRouter } from "vue-router";
 import { createGame } from "../config/api.js";
 import { findMe, saveGame } from "../config/db.js";
 
+import Keyboard from "../components/Keyboard.vue";
+
 const router = useRouter();
 
 const word = ref("");
@@ -21,4 +23,5 @@ const criar = (_) => {
     <input type="text" v-model="word" />
     <button type="submit">Criar</button>
   </form>
+  <Keyboard></Keyboard>
 </template>
