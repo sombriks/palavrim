@@ -1,5 +1,5 @@
 <script setup>
-import { ref, onMounted } from "vue";
+import { ref, reactive, onMounted } from "vue";
 import { useRoute, useRouter } from "vue-router";
 
 import Keyboard from "../components/Keyboard.vue";
@@ -11,7 +11,7 @@ import { getGame } from "../config/api.js";
 const router = useRouter();
 const route = useRoute();
 
-const game = ref({});
+const game = ref({ word: "" });
 const results = ref([]);
 const aWord = ref("");
 
@@ -41,7 +41,12 @@ const newLetter = (letter) => {
     </div>
   </div>
   <div :class="$style.section">
-    <GuessLine v-model="aWord" :game="game" @enter-guess="myGuess"></GuessLine>
+    <GuessLine
+      v-if="game.word"
+      v-model="aWord"
+      :word="game.word"
+      @enter-guess="myGuess"
+    ></GuessLine>
   </div>
   <div :class="$style.section">
     <Keyboard

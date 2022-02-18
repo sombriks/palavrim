@@ -17,6 +17,11 @@ const criar = (_) => {
     .then((game) => router.push(`/play/${game.uid}`));
 };
 const onLetter = (l) => (word.value += l);
+const apaga = () => {
+  const w = word.value.split("");
+  w.pop();
+  word.value = w.join("");
+};
 </script>
 <template>
   <h1>Dê uma palavra para desafiar os outros</h1>
@@ -24,7 +29,12 @@ const onLetter = (l) => (word.value += l);
     <input type="text" readonly v-model="word" />
   </div>
   <div :class="$style['new-word']">
-    <Keyboard @new-letter="onLetter" v-model="word" @enter="criar"></Keyboard>
+    <Keyboard
+      @new-letter="onLetter"
+      v-model="word"
+      @erase="apaga"
+      @enter="criar"
+    ></Keyboard>
   </div>
 </template>
 <style module>

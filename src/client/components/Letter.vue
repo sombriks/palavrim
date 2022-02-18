@@ -1,10 +1,15 @@
 <script setup>
 import { defineProps } from "vue";
-const { guess, index, mode } = defineProps(["guess", "index", "mode"]);
+const { guess, index, char, mode } = defineProps([
+  "guess",
+  "index",
+  "mode",
+  "char",
+]);
 </script>
 <template>
   <div :class="[$style.letter, $style[mode]]">
-    {{ guess && guess[index] || "" }}
+    {{ (guess && guess[index]) || "" }}
   </div>
 </template>
 <style module>
@@ -15,7 +20,7 @@ const { guess, index, mode } = defineProps(["guess", "index", "mode"]);
   border-radius: 0.5em;
   text-align: center;
   vertical-align: middle;
-  font-family: 'Courier New', Courier, monospace;
+  font-family: "Courier New", Courier, monospace;
   font-weight: bolder;
 }
 .guess,

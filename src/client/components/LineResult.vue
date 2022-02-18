@@ -30,7 +30,7 @@ const letterMode = computed(() => {
     <Letter
       v-for="(char, i) in result.guess"
       :char="char"
-      :guess="result"
+      :guess="result.guess"
       :index="i"
       :mode="letterMode[i]"
     ></Letter>

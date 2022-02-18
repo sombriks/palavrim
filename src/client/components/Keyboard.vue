@@ -1,5 +1,5 @@
 <script setup>
-import { defineProps, defineEmits } from "vue";
+import { defineProps, defineEmits, onMounted, onUnmounted } from "vue";
 const line1 = ["q", "w", "e", "r", "t", "y", "u", "i", "o", "p"];
 const line2 = ["a", "s", "d", "f", "g", "h", "j", "k", "l"];
 const line3 = ["z", "x", "c", "v", "b", "n", "m"];
@@ -14,6 +14,25 @@ const emit = defineEmits(["new-letter", "erase", "enter", "update:modelValue"]);
 const onLetter = (l) => {
   emit("new-letter", l);
 };
+
+const onKey = (e) => {
+  if (
+    line1.find((k) => k == e.key) ||
+    line2.find((k) => k == e.key) ||
+    line3.find((k) => k == e.key)
+  ) {
+    onLetter(e.key);
+  } else if ("Enter" == e.key) {
+    emit("enter");
+  } else if ("Backspace" == e.key) {
+    emit("erase");
+  } else {
+    console.log(e.key);
+  }
+};
+
+onMounted(() => window.addEventListener("keydown", onKey));
+onUnmounted(() => window.removeEventListener("keydown", onKey));
 </script>
 <template>
   <div :class="$style.blank">
@@ -43,7 +62,6 @@ const onLetter = (l) => {
 <style module>
 .blank {
   margin: 0em;
-  
 }
 .keyb {
   display: flex;
