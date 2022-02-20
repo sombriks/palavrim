@@ -20,7 +20,7 @@ const emit = defineEmits(["enter-guess", "update:modelValue"]);
 const myGuess = toRef(props, "modelValue");
 
 const onKey = (e) => {
-  // console.log(e)
+  console.log(e)
   if (alphabet.enter == e.key) {
     emit("enter-guess", myGuess.value);
     myGuess.value = "";

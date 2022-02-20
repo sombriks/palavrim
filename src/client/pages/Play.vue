@@ -21,13 +21,28 @@ onMounted(async () => {
 });
 
 const myGuess = (guess) => {
-  console.log(guess);
+  if (guess.length < game.value.word.length) {
+    console.log("too small");
+    return;
+  } else if (guess.length > game.value.word.length) {
+    guess = guess.split("");
+    while (guess.length > game.value.word.length) {
+      guess.pop();
+    }
+    guess = guess.join("");
+  }
   results.value.push({ guess });
   aWord.value = "";
 };
 
 const newLetter = (letter) => {
   aWord.value += letter;
+};
+
+const apaga = () => {
+  const w = aWord.value.split("");
+  w.pop();
+  aWord.value = w.join("");
 };
 </script>
 <template>
@@ -54,6 +69,7 @@ const newLetter = (letter) => {
       :game="game"
       :results="results"
       @new-letter="newLetter"
+      @erase="apaga"
       @enter="myGuess(aWord)"
     ></Keyboard>
   </div>
