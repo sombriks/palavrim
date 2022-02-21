@@ -46,9 +46,10 @@ cima ou pra baixo, graduando como bem entender. em resumo se você quer controla
 cada pequeno aspecto do seu projeto vue 3 (cdn? browser modules? webpack?
 vue-cli? vite? tudo valendo!) ainda é possível.
 
-e sim, um projeto npm não é obrigado a ser apenas frontend ou apenas backend!
-considero projetos node/npm como "gênero fluído", pois nada impede o que foi
-feito aqui de ser feito novamente ou até mesmo transcender o que tem aqui.
+e sim, um projeto npm não é obrigado a ser apenas frontend ou apenas backend! É
+o que os antigos chamavam de [Arquitetura multicamada](https://en.wikipedia.org/wiki/Multitier_architecture).
+considero projetos node/npm como "gênero fluído", pois nenhuma regra diz que o
+projeto é pra ser só frontend ou só backend. 
 
 é uma solução melhor do que o que se vê normalmente? calma, não é bem assim.
 aqui eu tenho um problema que desejo muito resolver, e esta é uma solução que eu
