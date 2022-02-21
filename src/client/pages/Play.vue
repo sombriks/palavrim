@@ -6,7 +6,9 @@ import Keyboard from "../components/Keyboard.vue";
 import GuessLine from "../components/GuessLine.vue";
 import LineResult from "../components/LineResult.vue";
 
-import { getGame } from "../config/api.js";
+import { checkMyself } from "../config/db.js";
+
+import { getGame, getResults, saveResult } from "../config/api.js";
 
 const router = useRouter();
 const route = useRoute();
@@ -14,13 +16,22 @@ const route = useRoute();
 const game = ref({ word: "" });
 const results = ref([]);
 const aWord = ref("");
+const user = ref({});
+const victory = ref(false);
 
 onMounted(async () => {
+  user.value = await checkMyself();
   const ret = await getGame(route.params.game);
   game.value = ret.data;
+  const ret2 = await getResults({
+    game_uid: game.value.uid,
+    user_uid: user.value.uid,
+  });
+  results.value = ret2.data;
+  victory.value = results.value.filter((r) => r.is_correct).length > 0;
 });
 
-const myGuess = (guess) => {
+const myGuess = async (guess) => {
   if (guess.length < game.value.word.length) {
     console.log("too small");
     return;
@@ -31,8 +42,15 @@ const myGuess = (guess) => {
     }
     guess = guess.join("");
   }
-  results.value.push({ guess });
+  const ret = await saveResult({
+    guess,
+    user_uid: user.value.uid,
+    game_uid: game.value.uid,
+    is_correct: guess == game.value.word,
+  });
+  results.value.push(ret.data);
   aWord.value = "";
+  victory.value = results.value.filter((r) => r.is_correct).length > 0;
 };
 
 const newLetter = (letter) => {
@@ -55,8 +73,12 @@ const apaga = () => {
       ></LineResult>
     </div>
   </div>
+  <div :class="$style.section" v-if="victory">
+    <h1>Sucesso!</h1>
+  </div>
   <div :class="$style.section">
     <GuessLine
+      :enabled="!victory"
       v-if="game.word"
       v-model="aWord"
       :word="game.word"
@@ -65,6 +87,7 @@ const apaga = () => {
   </div>
   <div :class="$style.section">
     <Keyboard
+      :enabled="!victory"
       v-model="aWord"
       :game="game"
       :results="results"

@@ -20,7 +20,7 @@ exports.up = function (knex) {
       t.string("word").notNullable();
       t.timestamps();
     })
-    .createTable("results", (t) => {
+    .createTable("result", (t) => {
       t.increments("id");
       t.string("uid").unique().notNullable();
       t.integer("user_id")
@@ -34,6 +34,7 @@ exports.up = function (knex) {
         .references("game.id")
         .onDelete("cascade");
       t.string("guess").notNullable();
+      t.boolean("is_correct").notNullable().defaultTo(false);
       t.timestamps();
     });
 };

@@ -7,6 +7,7 @@ import { knex } from "./config/db.js";
 
 import { users } from "./routes/users.js";
 import { games } from "./routes/games.js";
+import { results } from "./routes/results.js";
 
 const app = express();
 
@@ -16,6 +17,7 @@ app.use(bodyParser.json());
 
 app.use(users);
 app.use(games);
+app.use(results);
 
 app.use(express.static(process.env.STATIC_FOLDER));
 

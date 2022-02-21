@@ -1,18 +1,27 @@
 <script setup>
-import { defineProps, defineEmits, onMounted, onUnmounted } from "vue";
+import { defineProps, defineEmits, onMounted, onUnmounted, toRef } from "vue";
 const line1 = ["q", "w", "e", "r", "t", "y", "u", "i", "o", "p"];
 const line2 = ["a", "s", "d", "f", "g", "h", "j", "k", "l"];
 const line3 = ["z", "x", "c", "v", "b", "n", "m"];
 
-const { game, results, modelValue } = defineProps([
-  "game",
-  "results",
-  "modelValue",
-]);
+const props = defineProps({
+  game: Object,
+  results: Array,
+  modelValue: String,
+  enabled: {
+    type: Boolean,
+    default: true,
+  },
+});
+
+const { game, results, modelValue, enabled } = props;
+
+const active = toRef(props, "enabled"); // TODO enxugar sintaxe
+
 const emit = defineEmits(["new-letter", "erase", "enter", "update:modelValue"]);
 
 const onLetter = (l) => {
-  emit("new-letter", l);
+  if (active.value) emit("new-letter", l);
 };
 
 const onKey = (e) => {
@@ -35,6 +44,7 @@ onMounted(() => window.addEventListener("keydown", onKey));
 onUnmounted(() => window.removeEventListener("keydown", onKey));
 </script>
 <template>
+  <!-- TODO: pintar teclas de acordo com os resultados e a palavra -->
   <div :class="$style.blank">
     <div :class="$style.keyb">
       <button @click="onLetter(s)" :class="$style.key" v-for="s in line1">

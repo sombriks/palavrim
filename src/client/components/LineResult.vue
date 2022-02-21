@@ -24,14 +24,13 @@ const letterMode = computed(() => {
       if (len > 1) {
         modes.push("doubles");
       }
-      if (len) {
+      else if (len) {
         modes.push("exists");
       } else {
         modes.push("none");
       }
     }
   }
-  console.log(modes);
   return modes;
 });
 </script>
