@@ -17,9 +17,19 @@ const letterMode = computed(() => {
   const guesses = result.guess.split("").map((e) => e.toUpperCase());
   const modes = [];
   for (let i = 0; i < letters.length; i++) {
-    if (letters[i] == guesses[i]) modes.push("match");
-    else if (letters.find((l) => l == guesses[i])) modes.push("exists");
-    else modes.push("none");
+    if (letters[i] == guesses[i]) {
+      modes.push("match");
+    } else {
+      const len = letters.filter((l) => l == guesses[i]).length;
+      if (len > 1) {
+        modes.push("doubles");
+      }
+      if (len) {
+        modes.push("exists");
+      } else {
+        modes.push("none");
+      }
+    }
   }
   console.log(modes);
   return modes;

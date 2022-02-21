@@ -25,6 +25,7 @@ const { guess, index, char, mode } = defineProps([
 }
 .guess,
 .match,
+.doubles,
 .exists,
 .none {
   color: gray;
@@ -35,6 +36,11 @@ const { guess, index, char, mode } = defineProps([
   color: green;
   border-color: green;
   background-color: lightgreen;
+}
+.doubles {
+  color: blue;
+  border-color: blue;
+  background-color: lightblue;
 }
 .exists {
   color: orange;
