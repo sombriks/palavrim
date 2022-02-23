@@ -18,17 +18,25 @@ module.exports = {
   },
   staging: {
     client: "mysql2",
-    connection:{
-      host : '127.0.0.1',
-      port : 3306,
-      user : 'root',
-      password : 'root',
-      database : 'palavrim'
+    connection: {
+      host: "127.0.0.1",
+      port: 3306,
+      user: "root",
+      password: "root",
+      database: "palavrim",
     },
     debug: true,
     migrations: {
       tableName: "knex_migrations",
       directory: "./src/server/migrations",
     },
-  }
+  },
+  production: {
+    client: "mysql2",
+    connection: process.env.JAWSDB_URL,
+  },
+  migrations: {
+    tableName: "knex_migrations",
+    directory: "./src/server/migrations",
+  },
 };
