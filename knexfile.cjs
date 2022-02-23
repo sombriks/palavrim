@@ -34,9 +34,9 @@ module.exports = {
   production: {
     client: "mysql2",
     connection: process.env.JAWSDB_URL,
-  },
-  migrations: {
-    tableName: "knex_migrations",
-    directory: "./src/server/migrations",
+    migrations: {
+      tableName: "knex_migrations",
+      directory: "./src/server/migrations",
+    },
   },
 };
