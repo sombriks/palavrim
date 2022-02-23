@@ -71,6 +71,9 @@ const apaga = () => {
         v-for="res in results"
         :result="res"
       ></LineResult>
+      <div v-if="!results.length">
+        Tente uma palavra com {{game.word.length}} letras
+      </div>
     </div>
   </div>
   <div :class="$style.section" v-if="victory">
@@ -96,7 +99,6 @@ const apaga = () => {
       @enter="myGuess(aWord)"
     ></Keyboard>
   </div>
-  <router-link to="/create">Criar</router-link>
 </template>
 <style module>
 .section {

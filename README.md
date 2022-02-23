@@ -49,7 +49,7 @@ vue-cli? vite? tudo valendo!) ainda é possível.
 e sim, um projeto npm não é obrigado a ser apenas frontend ou apenas backend! É
 o que os antigos chamavam de [Arquitetura multicamada](https://en.wikipedia.org/wiki/Multitier_architecture).
 considero projetos node/npm como "gênero fluído", pois nenhuma regra diz que o
-projeto é pra ser só frontend ou só backend. 
+projeto é pra ser só frontend ou só backend.
 
 é uma solução melhor do que o que se vê normalmente? calma, não é bem assim.
 aqui eu tenho um problema que desejo muito resolver, e esta é uma solução que eu
