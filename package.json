@@ -12,7 +12,6 @@
     "dev": "cross-env NODE_ENV=development concurrently --kill-others 'npm run dev:client' 'npm run dev:server'",
     "dev:staging": "cross-env NODE_ENV=staging concurrently --kill-others 'npm run dev:client' 'npm run dev:server'",
     "start": "node -r dotenv-flow/config src/server/main.js",
-    "prestart": "npm run build:client"
   },
   "repository": {
     "type": "git",
