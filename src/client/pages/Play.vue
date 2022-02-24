@@ -80,7 +80,7 @@ const apaga = () => {
   <div :class="$style.section" v-if="victory">
     <h1>Sucesso!</h1>
   </div>
-  <div :class="$style.section">
+  <div v-if="!victory" :class="$style.section">
     <GuessLine
       :enabled="!victory"
       v-if="game.word"

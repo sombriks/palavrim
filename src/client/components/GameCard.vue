@@ -1,5 +1,10 @@
 <script setup>
 import { defineProps } from "vue";
+import { useRoute, useRouter } from "vue-router";
+
+const router = useRouter();
+const route = useRoute();
+
 const { mg } = defineProps(["mg"]);
 </script>
 <template>
@@ -9,7 +14,9 @@ const { mg } = defineProps(["mg"]);
     </div>
     <div :class="[$style.actions]">
       <div :class="$style.action">
-        <span class="icofont-chart-bar-graph"></span>
+        <router-link :to="`/game-status/${mg.uid}`">
+          <span class="icofont-chart-bar-graph"></span>
+        </router-link>
       </div>
       <div :class="$style.action">
         <span class="icofont-share"></span>
