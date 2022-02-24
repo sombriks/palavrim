@@ -11,7 +11,8 @@ import { results } from "./routes/results.js";
 
 const app = express();
 
-app.use(cors());
+if(process.env.NODE_ENV != "production") app.use(cors());
+
 app.use(morgan("common"));
 app.use(bodyParser.json());
 

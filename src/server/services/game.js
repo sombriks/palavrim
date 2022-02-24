@@ -3,7 +3,7 @@ import { knex } from "../config/db.js";
 
 export const gamesFromUser = async (uid) => {
   const [{ id }, ...rest] = await knex("user").select("id").where({ uid });
-  return await knex("game").where("user_id", id);
+  return await knex("game").where("user_id", id).orderBy("created_at", "desc");
 };
 
 export const newGame = async ({ uid, word }) => {

@@ -8,7 +8,7 @@ import LineResult from "../components/LineResult.vue";
 
 import { checkMyself } from "../config/db.js";
 
-import { getGame, getResults, saveResult } from "../config/api.js";
+import { getGame, getResults, saveResult, saveUser } from "../config/api.js";
 
 const router = useRouter();
 const route = useRoute();
@@ -21,6 +21,7 @@ const victory = ref(false);
 
 onMounted(async () => {
   user.value = await checkMyself();
+  await saveUser(user.value);
   const ret = await getGame(route.params.game);
   game.value = ret.data;
   const ret2 = await getResults({

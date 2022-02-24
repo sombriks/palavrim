@@ -33,7 +33,7 @@ const apaga = () => {
   <h1>Escreva uma nova palavra</h1>
   <small>entre 4 e 6 letras</small>
   <div :class="$style['new-word']">
-    <input type="text" readonly v-model="word" title="entre 4 e 6 letras" />
+    <input :class="$style.create" type="text" readonly v-model="word" title="entre 4 e 6 letras" />
   </div>
   <div :class="$style['new-word']">
     <Keyboard
@@ -56,5 +56,8 @@ const apaga = () => {
   font-size: xx-large;
   padding: 0.1em;
   font-family: "Courier New", Courier, monospace;
+  background-color: black;
+  color:aliceblue;
+  border: solid 0.15em aliceblue;
 }
 </style>

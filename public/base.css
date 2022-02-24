@@ -1,0 +1,9 @@
+body {
+  color: aliceblue;
+  background-color: black;
+  font-family: "Courier New", Courier, monospace;
+}
+
+.router-link-active {
+  font-weight: bolder;
+}
