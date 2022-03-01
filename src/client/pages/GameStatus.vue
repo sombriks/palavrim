@@ -13,5 +13,7 @@ onMounted( async () => {
   game.value = await getGame(route.params.uid)
 });
 </script>
-<template></template>
+<template>
+<h1>TBD</h1>
+</template>
 <style module></style>

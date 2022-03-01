@@ -17,3 +17,5 @@ export const getResults = ({ game_uid, user_uid }) =>
   api.get("/results", { params: { game_uid, user_uid } });
 
 export const saveResult = (result) => api.post("/result", result);
+
+export const getRecentGames = () => api.get("/games/recent");

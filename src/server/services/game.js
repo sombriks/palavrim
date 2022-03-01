@@ -23,3 +23,8 @@ export const getGame = async (uid) => {
   const [game] = await knex("game").where({ uid });
   return game;
 };
+
+export const getRecentGames = async () => {
+  const games = await knex("recent_games");
+  return games;
+};
