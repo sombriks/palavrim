@@ -6,6 +6,8 @@ import Keyboard from "../components/Keyboard.vue";
 import GuessLine from "../components/GuessLine.vue";
 import LineResult from "../components/LineResult.vue";
 
+import { letterMode } from "../components/LetterMode.js";
+
 import { checkMyself } from "../config/db.js";
 
 import { getGame, getResults, saveResult, saveUser } from "../config/api.js";
@@ -63,6 +65,33 @@ const apaga = () => {
   w.pop();
   aWord.value = w.join("");
 };
+
+const makeShare = () => {
+  const letters = game.value.word.split("").map((e) => e.toUpperCase());
+  const modes = [];
+  results.value.map((result) => {
+    const guesses = result.guess.split("").map((e) => e.toUpperCase());
+    modes.push(letterMode(letters, guesses));
+  });
+  const msg = `
+Adivinhei a palavra!
+${modes
+  .map((row) =>
+    row
+      .map((letter) => {
+        if (letter == "match") return "🟩";
+        else if (letter == "doubles") return "🟦";
+        else if (letter == "exists") return "🟧";
+        else return "⬛";
+      })
+      .join("")
+  )
+  .join("\n")}
+Tente em ${window.location.href}
+  `;
+  navigator.clipboard.writeText(msg);
+  alert("texto copiado para clipboard!");
+};
 </script>
 <template>
   <div :class="$style.section">
@@ -73,12 +102,17 @@ const apaga = () => {
         :result="res"
       ></LineResult>
       <div v-if="!results.length">
-        Tente uma palavra com {{game.word.length}} letras
+        Tente uma palavra com {{ game.word.length }} letras
       </div>
     </div>
   </div>
-  <div :class="$style.section" v-if="victory">
+  <div :class="[$style.section, $style.col]" v-if="victory">
     <h1>Sucesso!</h1>
+    <div>
+      <button :class="$style.share" @click="makeShare()">
+        Compartilhar 🔗
+      </button>
+    </div>
   </div>
   <div v-if="!victory" :class="$style.section">
     <GuessLine
@@ -109,5 +143,28 @@ const apaga = () => {
 .section,
 .margin {
   margin: 0.2em;
+}
+.col {
+  flex-direction: column;
+  align-items: center;
+}
+
+.share {
+  border: solid 0.25em;
+  color: green;
+  border-color: green;
+  background-color: lightgreen;
+
+  border-radius: 3px;
+  border-radius: 0.5em;
+  min-width: 2.5em;
+  min-height: 3em;
+  margin: 0.05em;
+  text-align: center;
+  vertical-align: middle;
+  font-family: "Courier New", Courier, monospace;
+  font-weight: bolder;
+  justify-content: center;
+  text-align: center;
 }
 </style>

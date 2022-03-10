@@ -36,7 +36,7 @@ const onKey = (e) => {
   } else if ("Backspace" == e.key) {
     emit("erase");
   } else {
-    console.log(e.key);
+    // console.log(e.key);
   }
 };
 

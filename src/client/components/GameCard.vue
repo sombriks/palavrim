@@ -15,11 +15,8 @@ const { mg } = defineProps(["mg"]);
     <div :class="[$style.actions]">
       <div :class="$style.action">
         <router-link :to="`/game-status/${mg.uid}`">
-          <span class="icofont-chart-bar-graph"></span>
+          <span>🗠</span>
         </router-link>
-      </div>
-      <div :class="$style.action">
-        <span class="icofont-share"></span>
       </div>
     </div>
   </div>
@@ -45,8 +42,13 @@ const { mg } = defineProps(["mg"]);
   justify-content: space-around;
   flex-wrap: nowrap;
   width: 100%;
+  color: purple;
+  font-size: 2em;
 }
 .action {
   align-items: center;
+}
+.action:visited {
+  color: darkslateblue;
 }
 </style>
