@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/palavrim.iml" filepath="$PROJECT_DIR$/.idea/palavrim.iml" />
+      <module fileurl="file://$PROJECT_DIR$/projetos/palavrim-simple-java/palavrim-simple-java.iml" filepath="$PROJECT_DIR$/projetos/palavrim-simple-java/palavrim-simple-java.iml" />
     </modules>
   </component>
 </project>
