@@ -29,7 +29,7 @@ public class Palavrim {
 
     public void jogarNoTerminal(Partida partida) {
         try (Scanner input = new Scanner(System.in)) {
-            while (!partida.resolvida()) {
+            while (!partida.resolvida() && partida.restamTentativas()) {
                 System.out.println(partida.getStatus());
                 System.out.print("Qual a próxima tentativa? ");
                 try {
@@ -37,9 +37,11 @@ public class Palavrim {
                 } catch (Exception e) {
                     System.out.println(e);
                 }
+                System.out.printf("Restam %d tentativas\n", partida.getTentativasRestantes());
                 System.out.println();
             }
-            System.out.printf("Você acertou a palavra em %d tentativas, parabéns!\n", partida.numTentativas());
+            if(partida.resolvida()) System.out.printf("Você acertou a palavra em %d tentativas, parabéns!\n", partida.numTentativas());
+            else System.out.printf("Suas chances acabaram, a palavra era %s.\n", partida.getPalavra());
             System.out.println(partida.getStatus());
         }
     }

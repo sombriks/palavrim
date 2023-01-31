@@ -8,6 +8,8 @@ public class Partida {
     private final List<String> palavras;
     private final List<Tentativa> tentativas = new ArrayList<>();
 
+    private int tentativasRestantes = 8;
+
     public Partida(List<String> palavras, String palavra) {
         this.palavras = palavras;
         this.palavra = palavra;
@@ -26,6 +28,7 @@ public class Partida {
     }
 
     public Tentativa tentar(String palavra) throws Exception {
+        tentativasRestantes--;
         if (palavras.stream().noneMatch(palavra::equalsIgnoreCase))
             throw new Exception("Palavra não existe");
         Tentativa tentativa = new Tentativa(this.palavra, palavra);
@@ -45,4 +48,15 @@ public class Partida {
         return tentativas.size();
     }
 
+    public boolean restamTentativas() {
+        return tentativasRestantes > 0;
+    }
+
+    public int getTentativasRestantes() {
+        return tentativasRestantes;
+    }
+
+    public String getPalavra() {
+        return palavra;
+    }
 }
