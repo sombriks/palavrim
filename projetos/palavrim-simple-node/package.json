@@ -3,7 +3,10 @@
   "name": "palavrim-simple-node",
   "version": "1.0.0",
   "description": "simple command line word game",
-  "main": "palavrim.js",
+  "main": "index.mjs",
+  "scripts": {
+    "start": "node index.mjs"
+  },
   "keywords": [],
   "author": "sombriks",
   "license": "MIT"

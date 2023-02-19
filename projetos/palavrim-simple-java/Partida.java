@@ -4,7 +4,7 @@ import java.util.List;
 public class Partida {
 
     private final String palavra;
-    private String status;
+    private String mascara;
     private final List<String> palavras;
     private final List<Tentativa> tentativas = new ArrayList<>();
 
@@ -13,7 +13,7 @@ public class Partida {
     public Partida(List<String> palavras, int idx) {
         this.palavras = palavras;
         this.palavra = palavras.get(idx);
-        this.status = palavra.replaceAll(".", "*");
+        this.mascara = palavra.replaceAll(".", "*");
     }
 
     public boolean resolvida() {
@@ -21,26 +21,26 @@ public class Partida {
     }
 
     public String getStatus() {
-        String ret = String.format("status:\n\t%s\ntentativas:\n", status);
+        String ret = String.format("status:\n\t%s\ntentativas:\n", mascara);
         for (Tentativa t : tentativas)
             ret += String.format("\t%s\n", t);
         return ret;
     }
 
-    public Tentativa tentar(String palavra) throws Exception {
+    public Tentativa tentar(String palpite) throws Exception {
         tentativasRestantes--;
-        if (palavras.stream().noneMatch(palavra::equalsIgnoreCase))
+        if (palavras.stream().noneMatch(palpite::equalsIgnoreCase))
             throw new Exception("Palavra não existe");
-        Tentativa tentativa = new Tentativa(this.palavra, palavra);
+        Tentativa tentativa = new Tentativa(this.palavra, palpite);
         tentativas.add(tentativa);
         char[] resultado = tentativa.getResultado().toCharArray();
-        char[] update = status.toCharArray();
-        char[] pal = palavra.toCharArray();
+        char[] update = mascara.toCharArray();
+        char[] pal = palpite.toCharArray();
         for (int i = 0; i < resultado.length; i++) {
             if (resultado[i] == '#')
                 update[i] = pal[i];
         }
-        status = new String(update);
+        mascara = new String(update);
         return tentativa;
     }
 

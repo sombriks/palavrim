@@ -47,7 +47,7 @@ public class Palavrim {
     }
 
     public static void main(String[] args) throws Exception {
-        Palavrim palavrim = new Palavrim(6);
+        Palavrim palavrim = new Palavrim(6); // TODO deveria ser configurável?
         Partida partida = null;
         if (args.length > 0) {
             partida = palavrim.criaPartida(Integer.parseInt(args[0]));
