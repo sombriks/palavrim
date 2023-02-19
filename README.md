@@ -24,3 +24,26 @@ Uma coisa que a primeira versão não respeitava era a lista de palavras. Qualqu
 um podia inventar uma palavra.
 
 Nesta versão vou usar [essa lista aqui](https://www.ime.usp.br/~pf/dicios/).
+
+## Passo a passo da execução
+
+- carregar lista de palavras
+- escolher palavra (aleatória ou por índice da lista)
+- preparar partida
+  - máscara da palavra
+  - registro de tentativas
+    - validações
+      - palpite existe na lista?
+      - palpite tem o tamanho certo?
+      - máximo de tentativas atingido?
+    - tentativa e máscara da tentativa
+    - verificação de resultado
+      - tentativas restantes
+      - palpite condiz com a palavra
+
+## Roadmap
+
+- [X] ao menos uma versão em linha de comando
+- [ ] ao menos uma api rest
+- [ ] estrutura pra publicar em alguma nuvem
+- [ ] interface web
