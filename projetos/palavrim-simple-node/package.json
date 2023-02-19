@@ -1,0 +1,10 @@
+{
+  "module": true,
+  "name": "palavrim-simple-node",
+  "version": "1.0.0",
+  "description": "simple command line word game",
+  "main": "palavrim.js",
+  "keywords": [],
+  "author": "sombriks",
+  "license": "MIT"
+}

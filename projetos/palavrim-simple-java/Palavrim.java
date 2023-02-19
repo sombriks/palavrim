@@ -24,7 +24,7 @@ public class Palavrim {
     }
 
     private Partida criaPartida(int idx) {
-        return new Partida(palavras, palavras.get(idx));
+        return new Partida(palavras, idx);
     }
 
     public void jogarNoTerminal(Partida partida) {

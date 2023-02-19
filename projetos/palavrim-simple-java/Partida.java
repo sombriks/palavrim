@@ -10,9 +10,9 @@ public class Partida {
 
     private int tentativasRestantes = 8;
 
-    public Partida(List<String> palavras, String palavra) {
+    public Partida(List<String> palavras, int idx) {
         this.palavras = palavras;
-        this.palavra = palavra;
+        this.palavra = palavras.get(idx);
         this.status = palavra.replaceAll(".", "*");
     }
 
