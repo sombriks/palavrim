@@ -31,6 +31,7 @@ export const palavrim = (idx) => {
             console.log(`Você acertou a palavra em ${ctx.partida.tentativas.length} tentativas, parabéns!\n`)
         else
             console.log("Suas chances acabaram, a palavra era " + ctx.partida.palavra + "\n")
+        console.log(ctx.partida.getStatus())
         return ctx
     }
     return ctx

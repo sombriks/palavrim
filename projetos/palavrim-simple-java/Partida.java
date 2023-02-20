@@ -30,9 +30,14 @@ public class Partida {
     public Tentativa tentar(String palpite) throws Exception {
         if (palavras.stream().noneMatch(palpite::equalsIgnoreCase))
             throw new Exception("Palavra não existe");
+        if (tentativasRestantes >= 1)
+            tentativasRestantes--;
+        else
+            throw new Exception("Sem tentativas restantes");
         Tentativa tentativa = new Tentativa(this.palavra, palpite);
-        tentativasRestantes--;
+        // guarda a tentativa
         tentativas.add(tentativa);
+        // atualiza a mascara
         char[] resultado = tentativa.getResultado().toCharArray();
         char[] update = mascara.toCharArray();
         char[] pal = palpite.toCharArray();
@@ -41,6 +46,8 @@ public class Partida {
                 update[i] = pal[i];
         }
         mascara = new String(update);
+
+        // devolve a tentativa
         return tentativa;
     }
 
