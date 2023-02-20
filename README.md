@@ -31,13 +31,16 @@ Nesta versão vou usar [essa lista aqui](https://www.ime.usp.br/~pf/dicios/).
 - definir tamanho máximo das palavras
 - escolher palavra (aleatória ou por índice da lista)
 - preparar partida
-  - máscara da palavra
+  - máscara da palavra (resumo das tentativas até o momento)
   - registro de tentativas
     - validações
       - palpite existe na lista?
       - palpite tem o tamanho certo?
       - máximo de tentativas atingido?
-    - tentativa e máscara da tentativa
+    - tentativa
+      - palpite da tentativa
+      - máscara de resultado
+      - letras não encontradas // TODO implementar
     - verificação de resultado
       - tentativas restantes
       - palpite condiz com a palavra
@@ -47,4 +50,4 @@ Nesta versão vou usar [essa lista aqui](https://www.ime.usp.br/~pf/dicios/).
 - [X] ao menos uma versão em linha de comando
 - [ ] ao menos uma api rest
 - [ ] estrutura pra publicar em alguma nuvem
-- [ ] interface web
+- [ ] recriar interface web

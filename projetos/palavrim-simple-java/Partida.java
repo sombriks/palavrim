@@ -30,7 +30,7 @@ public class Partida {
     public Tentativa tentar(String palpite) throws Exception {
         // palavras que não estão na lista não contam como tentativa
         if (palavras.stream().noneMatch(palpite::equalsIgnoreCase))
-            throw new Exception("Palavra não existe");
+            throw new Exception("Palavra não existe na lista");
         // também vamos relevar palpites inválidos
         Tentativa tentativa = new Tentativa(this.palavra, palpite);
         if (tentativasRestantes >= 1)

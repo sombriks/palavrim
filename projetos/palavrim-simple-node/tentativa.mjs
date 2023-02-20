@@ -17,7 +17,7 @@ export const tentativa = (palavra, palpite) => {
     ctx.resultado = ""
 
     for (let i = 0; i < palavra.length; i++) {
-        if(palavra[i] == palpite[i]) ctx.resultado += "#"
+        if(palavra[i] === palpite[i]) ctx.resultado += "#"
         else if(palavra.indexOf(palpite[i]) > -1) ctx.resultado += "$"
         else ctx.resultado += "*"
     }

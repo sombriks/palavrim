@@ -3,13 +3,14 @@ import {partida} from "./partida.mjs";
 import {leia} from "./leia.mjs";
 
 export const palavrim = (idx) => {
-    const ctx = {}
-    ctx.palavras = fs.readFileSync("palavras.txt")
-        .toString()
-        .split("\n")
-        .filter(p => p.length <= 6) // TODO tornar configurável?
-        .map(p => p.trim())
-    // console.log(ctx.palavras)
+    const ctx = {
+        palavras: fs.readFileSync("palavras.txt")
+            .toString()
+            .split("\n")
+            .filter(p => p.length <= 6) // TODO tornar configurável?
+            .map(p => p.trim())
+    }
+    console.info(`Tem ${ctx.palavras.length} palavras disponíveis`)
     let i = parseInt(Math.random() * ctx.palavras.length, 0)
     if (idx) {
         i = idx
