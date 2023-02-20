@@ -5,7 +5,7 @@ import {leia} from "./leia.mjs";
 export const palavrim = (idx) => {
     const ctx = {
         palavras: fs.readFileSync("palavras.txt")
-            .toString()
+            .toString().trim()
             .split("\n")
             .filter(p => p.length <= 6) // TODO tornar configurável?
             .map(p => p.trim())
