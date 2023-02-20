@@ -5,7 +5,10 @@ import {leia} from "./leia.mjs";
 export const palavrim = (idx) => {
     const ctx = {}
     ctx.palavras = fs.readFileSync("palavras.txt")
-        .toString().split("\n").filter(p => p.length <= 6)
+        .toString()
+        .split("\n")
+        .filter(p => p.length <= 6) // TODO tornar configurável?
+        .map(p => p.trim())
     // console.log(ctx.palavras)
     let i = parseInt(Math.random() * ctx.palavras.length, 0)
     if (idx) {
@@ -23,7 +26,7 @@ export const palavrim = (idx) => {
             try {
                 ctx.partida.tentar(palpite)
             } catch (e) {
-                console.log(e)
+                console.log(e.message)
             }
             console.log(`Restam ${ctx.partida.tentativasRestantes} tentativas\n\n`)
         }

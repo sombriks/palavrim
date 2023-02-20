@@ -37,5 +37,4 @@ public class Tentativa {
   public String toString() {
     return palpite + "|" + resultado;
   }
-
 }

@@ -35,7 +35,7 @@ public class Palavrim {
                 try {
                     partida.tentar(input.nextLine());
                 } catch (Exception e) {
-                    System.out.println(e);
+                    System.out.println(e.getMessage());
                 }
                 System.out.printf("Restam %d tentativas\n", partida.getTentativasRestantes());
                 System.out.println();

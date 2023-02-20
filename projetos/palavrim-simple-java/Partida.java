@@ -28,13 +28,15 @@ public class Partida {
     }
 
     public Tentativa tentar(String palpite) throws Exception {
+        // palavras que não estão na lista não contam como tentativa
         if (palavras.stream().noneMatch(palpite::equalsIgnoreCase))
             throw new Exception("Palavra não existe");
+        // também vamos relevar palpites inválidos
+        Tentativa tentativa = new Tentativa(this.palavra, palpite);
         if (tentativasRestantes >= 1)
             tentativasRestantes--;
         else
             throw new Exception("Sem tentativas restantes");
-        Tentativa tentativa = new Tentativa(this.palavra, palpite);
         // guarda a tentativa
         tentativas.add(tentativa);
         // atualiza a mascara

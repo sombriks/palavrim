@@ -15,13 +15,15 @@ export const partida = (palavras, idx) => {
                 .map(t => t.getStatus()).join("\n")}`
         },
         tentar(palpite) {
+            // palavras que não estão na lista não contam como tentativa
             if (!palavras.find(t => t === palpite))
                 throw new Error("Palavra não existe")
+            const ten = tentativa(ctx.palavra, palpite)
+            // também vamos relevar palpites inválidos
             if (ctx.tentativasRestantes >= 1)
                 ctx.tentativasRestantes--
             else
                 throw new Error("Sem tentativas restantes")
-            const ten = tentativa(ctx.palavra, palpite)
             // guarda a tentativa
             ctx.tentativas.push(ten)
             // atualiza a mascara
