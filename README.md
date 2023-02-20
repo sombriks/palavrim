@@ -28,6 +28,7 @@ Nesta versão vou usar [essa lista aqui](https://www.ime.usp.br/~pf/dicios/).
 ## Passo a passo da execução
 
 - carregar lista de palavras
+- definir tamanho máximo das palavras
 - escolher palavra (aleatória ou por índice da lista)
 - preparar partida
   - máscara da palavra

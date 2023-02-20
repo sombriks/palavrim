@@ -8,7 +8,7 @@ public class Partida {
     private final List<String> palavras;
     private final List<Tentativa> tentativas = new ArrayList<>();
 
-    private int tentativasRestantes = 8;
+    private int tentativasRestantes = 8; // TODO tornar configurável
 
     public Partida(List<String> palavras, int idx) {
         this.palavras = palavras;
@@ -28,10 +28,10 @@ public class Partida {
     }
 
     public Tentativa tentar(String palpite) throws Exception {
-        tentativasRestantes--;
         if (palavras.stream().noneMatch(palpite::equalsIgnoreCase))
             throw new Exception("Palavra não existe");
         Tentativa tentativa = new Tentativa(this.palavra, palpite);
+        tentativasRestantes--;
         tentativas.add(tentativa);
         char[] resultado = tentativa.getResultado().toCharArray();
         char[] update = mascara.toCharArray();

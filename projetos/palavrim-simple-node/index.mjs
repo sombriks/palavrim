@@ -1,5 +1,5 @@
-import {palavrim} from "./palavrim.mjs";
+import {palavrim} from "./palavrim.mjs"
 
-palavrim(process.argv[2])
+const p = palavrim(process.argv[2])
     .criarPartida()
-    .jogarNoTerminal();
+    .jogarNoTerminal()
