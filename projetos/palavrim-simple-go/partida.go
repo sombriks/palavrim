@@ -1,15 +1,17 @@
 package main
 
 import (
+	"errors"
 	"fmt"
 	"regexp"
+	"strings"
 )
 
 type Partida struct {
 	palavras            []string
 	segredo             string
 	tentativas          []*Tentativa
-	status              string
+	mascara             string
 	tentativasRestantes int
 }
 
@@ -20,13 +22,13 @@ func NewPartida(palavras []string, idx int) *Partida {
 		palavras:            palavras,
 		segredo:             segredo,
 		tentativasRestantes: 8, // TODO tornar configurável
-		status:              rgx.ReplaceAllString(segredo, "*"),
+		mascara:             rgx.ReplaceAllString(segredo, "*"),
 	}
 }
 
 func (p *Partida) Resolvida() bool {
 	for _, t := range p.tentativas {
-		if t.acertou() {
+		if t.Acertou() {
 			return true
 		}
 	}
@@ -34,12 +36,44 @@ func (p *Partida) Resolvida() bool {
 }
 
 func (p *Partida) Status() string {
-	stat := fmt.Sprintf("status:\n\t%s\ntentativas:\n", p.status)
-
+	stat := fmt.Sprintf("status:\n\t%s\ntentativas:\n", p.mascara)
+	for _, e := range p.tentativas {
+		stat += "\t" + e.Status()
+	}
 	return stat
 }
 
 func (p *Partida) Tentar(palpite string) (*Tentativa, error) {
-	p.tentativasRestantes--
-	return nil, nil
+	var err error
+	var t *Tentativa
+	// palavras que não estão na lista não contam como tentativa
+	if noneMatchIgnoreCase(p.palavras, palpite) {
+		err = errors.New("palpite não existe na lista de palavras")
+	} else {
+		t, err = NewTentativa(p.segredo, palpite)
+		if err == nil {
+			p.tentativasRestantes--
+			// guarda a tentativa
+			p.tentativas = append(p.tentativas, t)
+			// atualiza a mascara
+			rResultado := []rune(t.resultado)
+			rStatus := []rune(p.mascara)
+			for i := 0; i < len(rResultado); i++ {
+				if rResultado[i] == '#' {
+					rStatus[i] = rune(p.segredo[i])
+				}
+			}
+			p.mascara = string(rStatus)
+		}
+	}
+	return t, err
+}
+
+func noneMatchIgnoreCase(palavras []string, palpite string) bool {
+	for _, p := range palavras {
+		if strings.EqualFold(p, palpite) {
+			return false
+		}
+	}
+	return true
 }

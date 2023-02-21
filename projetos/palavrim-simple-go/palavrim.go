@@ -41,23 +41,21 @@ func (p *Palavrim) JogarNoTerminal(partida *Partida) {
 		fmt.Println(partida.Status())
 		fmt.Println("Qual a próxima tentativa? ")
 		input.Scan()
-		tentativa, err := partida.Tentar(input.Text())
+		_, err := partida.Tentar(input.Text())
 		if err != nil {
 			fmt.Println(err)
-		} else {
-			partida.tentativas = append(partida.tentativas, tentativa)
 		}
 		fmt.Printf("Restam %d tentativas\n", partida.tentativasRestantes)
-
 	}
 	if partida.Resolvida() {
-		fmt.Printf("Você acertou a palavra em %d tentativas, parabéns!\n", len(partida.tentativas))
+		fmt.Printf("Você Acertou a palavra em %d tentativas, parabéns!\n", len(partida.tentativas))
 	} else {
 		fmt.Printf("Suas chances acabaram, a palavra era %s.\n", partida.segredo)
 	}
 	fmt.Println(partida.Status())
 }
 
+// go run alone won't build the other modules, perform a go build instead
 func main() {
 	palavrim := NewPalavrim(6) // TODO tornar configurável
 	fmt.Println(len(palavrim.palarvas))

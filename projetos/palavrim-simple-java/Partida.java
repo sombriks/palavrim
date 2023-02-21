@@ -23,7 +23,7 @@ public class Partida {
     public String getStatus() {
         String ret = String.format("status:\n\t%s\ntentativas:\n", mascara);
         for (Tentativa t : tentativas)
-            ret += String.format("\t%s\n", t);
+            ret += String.format("\t%s\n", t.getStatus());
         return ret;
     }
 
