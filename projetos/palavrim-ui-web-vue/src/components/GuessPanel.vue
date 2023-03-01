@@ -1,13 +1,16 @@
 <template>
-
+  <GuessLine></GuessLine>
+  <GuessLine></GuessLine>
+  <GuessLine></GuessLine>
+  <GuessLine></GuessLine>
+  <GuessLine></GuessLine>
+  <GuessLine></GuessLine>
+  <GuessLine></GuessLine>
+  <GuessLine></GuessLine>
 </template>
 
-<script>
-export default {
-  name: "GuessPanel"
-}
+<script setup>
+import GuessLine from '@/components/GuessLine.vue'
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>

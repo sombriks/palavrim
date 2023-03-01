@@ -1,13 +1,5 @@
-<template>
+<template><div></div></template>
 
-</template>
+<script setup></script>
 
-<script>
-export default {
-  name: "StatsPanel"
-}
-</script>
-
-<style scoped>
-
-</style>
+<style scoped></style>
