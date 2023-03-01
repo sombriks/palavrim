@@ -11,7 +11,7 @@ const props = defineProps(['digit'])
 <style scoped>
 div {
   --key-height: 3em;
-  --key-width: 2em;
+  --key-width: 1.5em;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -23,6 +23,6 @@ div {
   min-height: var(--key-height);
 }
 span {
-  margin: 1em;
+  margin: 0.9em;
 }
 </style>
