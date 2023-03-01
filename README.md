@@ -48,6 +48,6 @@ Nesta versão vou usar [essa lista aqui](https://www.ime.usp.br/~pf/dicios/).
 ## Roadmap
 
 - [X] ao menos uma versão em linha de comando
+- [ ] recriar interface web
 - [ ] ao menos uma api rest
 - [ ] estrutura pra publicar em alguma nuvem
-- [ ] recriar interface web
