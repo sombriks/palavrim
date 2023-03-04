@@ -3,11 +3,12 @@
     <h1>palavrim</h1>
   </header>
   <main>
-    <GuessPanel></GuessPanel>
+    <GuessPanel :match="match"></GuessPanel>
     <hr/>
-    <GameKeyboard></GameKeyboard>
+    <GameKeyboard :match="match"></GameKeyboard>
     <StatsDialog></StatsDialog>
     <HelpDialog></HelpDialog>
+    <br/>
   </main>
   <footer>
     <i> &copy; sombriks {{ date }} </i>
@@ -20,6 +21,10 @@ import GuessPanel from '@/components/GuessPanel.vue'
 import GameKeyboard from '@/components/GameKeyboard.vue'
 import StatsDialog from '@/components/StatsDialog.vue'
 import HelpDialog from '@/components/HelpDialog.vue'
+import words from '@/assets/words'
+import {newGame} from "@/palavrim";
+
+const match = ref(newGame(words))
 
 const date = ref(new Date().getFullYear())
 </script>
