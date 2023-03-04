@@ -1,5 +1,6 @@
 <template>
-  <GuessLine v-for="n in props.match.maxAttempts" :key="n" :match="props.match"></GuessLine>
+  <GuessLine v-for="(guess, i) in props.match.guesses"
+             :key="i" :guess="guess"></GuessLine>
 </template>
 
 <script setup>

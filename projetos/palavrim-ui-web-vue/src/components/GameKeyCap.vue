@@ -5,7 +5,19 @@
 </template>
 
 <script setup>
-const props = defineProps(['digit'])
+import {computed} from "vue";
+
+const props = defineProps(['digit', "letters"])
+
+const bg = computed(() => {
+  const status = props.letters?.flatMap(x => x).find(l => l.letter === props.digit)
+  if (status) {
+    if (status.exactMatch) return "lightgreen"
+    if (status.letterPresent) return "lightyellow"
+    if (status.letterNotPresent) return "lightsalmon"
+  }
+  return "white"
+})
 </script>
 
 <style scoped>
@@ -21,7 +33,9 @@ div {
   min-width: var(--key-width);
   max-height: var(--key-height);
   min-height: var(--key-height);
+  background-color: v-bind(bg);
 }
+
 span {
   margin: 0.9em;
 }

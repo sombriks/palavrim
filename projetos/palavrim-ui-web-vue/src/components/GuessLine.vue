@@ -1,13 +1,14 @@
 <template>
   <div>
-    <GuessDigit v-for="n in props.match.word.length" :key="n"></GuessDigit>
+    <GuessDigit v-for="(d, i) in props.guess.status"
+                :key="i" :guess="props.guess" :index="i"></GuessDigit>
   </div>
 </template>
 
 <script setup>
 import GuessDigit from '@/components/GuessDigit.vue'
 
-const props = defineProps(["match"])
+const props = defineProps(["guess"])
 </script>
 
 <style scoped>

@@ -1,7 +1,7 @@
 export default [
-    "arroto",
     "broto",
+    "carta",
     "comer",
+    "parto",
     "quais",
-    "ruas"
 ]

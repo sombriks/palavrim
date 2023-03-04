@@ -1,37 +1,37 @@
 <template>
   <div>
     <div class="line">
-      <GameKeyCap digit="Q"></GameKeyCap>
-      <GameKeyCap digit="W"></GameKeyCap>
-      <GameKeyCap digit="E"></GameKeyCap>
-      <GameKeyCap digit="R"></GameKeyCap>
-      <GameKeyCap digit="T"></GameKeyCap>
-      <GameKeyCap digit="Y"></GameKeyCap>
-      <GameKeyCap digit="U"></GameKeyCap>
-      <GameKeyCap digit="I"></GameKeyCap>
-      <GameKeyCap digit="O"></GameKeyCap>
-      <GameKeyCap digit="P"></GameKeyCap>
+      <GameKeyCap digit="Q" :letters="letters"></GameKeyCap>
+      <GameKeyCap digit="W" :letters="letters"></GameKeyCap>
+      <GameKeyCap digit="E" :letters="letters"></GameKeyCap>
+      <GameKeyCap digit="R" :letters="letters"></GameKeyCap>
+      <GameKeyCap digit="T" :letters="letters"></GameKeyCap>
+      <GameKeyCap digit="Y" :letters="letters"></GameKeyCap>
+      <GameKeyCap digit="U" :letters="letters"></GameKeyCap>
+      <GameKeyCap digit="I" :letters="letters"></GameKeyCap>
+      <GameKeyCap digit="O" :letters="letters"></GameKeyCap>
+      <GameKeyCap digit="P" :letters="letters"></GameKeyCap>
     </div>
     <div class="line">
-      <GameKeyCap digit="A"></GameKeyCap>
-      <GameKeyCap digit="S"></GameKeyCap>
-      <GameKeyCap digit="D"></GameKeyCap>
-      <GameKeyCap digit="F"></GameKeyCap>
-      <GameKeyCap digit="G"></GameKeyCap>
-      <GameKeyCap digit="H"></GameKeyCap>
-      <GameKeyCap digit="J"></GameKeyCap>
-      <GameKeyCap digit="K"></GameKeyCap>
-      <GameKeyCap digit="L"></GameKeyCap>
+      <GameKeyCap digit="A" :letters="letters"></GameKeyCap>
+      <GameKeyCap digit="S" :letters="letters"></GameKeyCap>
+      <GameKeyCap digit="D" :letters="letters"></GameKeyCap>
+      <GameKeyCap digit="F" :letters="letters"></GameKeyCap>
+      <GameKeyCap digit="G" :letters="letters"></GameKeyCap>
+      <GameKeyCap digit="H" :letters="letters"></GameKeyCap>
+      <GameKeyCap digit="J" :letters="letters"></GameKeyCap>
+      <GameKeyCap digit="K" :letters="letters"></GameKeyCap>
+      <GameKeyCap digit="L" :letters="letters"></GameKeyCap>
     </div>
     <div class="line">
       <GameKeyCap digit="Enter"></GameKeyCap>
-      <GameKeyCap digit="Z"></GameKeyCap>
-      <GameKeyCap digit="X"></GameKeyCap>
-      <GameKeyCap digit="C"></GameKeyCap>
-      <GameKeyCap digit="V"></GameKeyCap>
-      <GameKeyCap digit="B"></GameKeyCap>
-      <GameKeyCap digit="N"></GameKeyCap>
-      <GameKeyCap digit="M"></GameKeyCap>
+      <GameKeyCap digit="Z" :letters="letters"></GameKeyCap>
+      <GameKeyCap digit="X" :letters="letters"></GameKeyCap>
+      <GameKeyCap digit="C" :letters="letters"></GameKeyCap>
+      <GameKeyCap digit="V" :letters="letters"></GameKeyCap>
+      <GameKeyCap digit="B" :letters="letters"></GameKeyCap>
+      <GameKeyCap digit="N" :letters="letters"></GameKeyCap>
+      <GameKeyCap digit="M" :letters="letters"></GameKeyCap>
       <GameKeyCap digit="⌫"></GameKeyCap>
     </div>
   </div>
@@ -39,8 +39,11 @@
 
 <script setup>
 import GameKeyCap from '@/components/GameKeyCap.vue'
+import {computed} from "vue";
 
 const props = defineProps(["match"])
+
+const letters = computed(() => props.match.guesses.map(g => g.status))
 </script>
 
 <style scoped>

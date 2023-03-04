@@ -4,7 +4,9 @@
   </header>
   <main>
     <GuessPanel :match="match"></GuessPanel>
+    <InputPanel :match="match" @onGuess="addGuess"></InputPanel>
     <hr/>
+    <StatusLine :match="match"></StatusLine>
     <GameKeyboard :match="match"></GameKeyboard>
     <StatsDialog></StatsDialog>
     <HelpDialog></HelpDialog>
@@ -16,17 +18,24 @@
 </template>
 
 <script setup>
-import { ref } from 'vue'
+import {ref} from 'vue'
 import GuessPanel from '@/components/GuessPanel.vue'
 import GameKeyboard from '@/components/GameKeyboard.vue'
 import StatsDialog from '@/components/StatsDialog.vue'
 import HelpDialog from '@/components/HelpDialog.vue'
 import words from '@/assets/words'
-import {newGame} from "@/palavrim";
+import {newMatch} from "@/palavrim";
+import InputPanel from "@/components/InputPanel.vue";
+import StatusLine from "@/components/StatusLine.vue";
 
-const match = ref(newGame(words))
+const match = ref(newMatch(words))
 
 const date = ref(new Date().getFullYear())
+
+const addGuess = (guess) => {
+  // https://vuejs.org/guide/essentials/reactivity-fundamentals.html#limitations-of-reactive
+  match.value.guesses = [...match.value.guesses, guess]
+}
 </script>
 
 <style scoped>
@@ -37,10 +46,12 @@ footer {
   justify-content: center;
   align-items: center;
 }
+
 main {
   flex-direction: column;
 }
-hr{
+
+hr {
   width: 50vw;
 }
 </style>
