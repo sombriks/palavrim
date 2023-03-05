@@ -1,5 +1,5 @@
 <template>
-  <GuessLine :guess="current"></GuessLine>
+  <GuessLine v-if="!props.match.victory && !props.match.finished" :guess="current"></GuessLine>
   <StatusLine :match="match" :err="err"></StatusLine>
   <GameKeyboard :match="match" @onLetter="onType"></GameKeyboard>
 </template>
@@ -25,6 +25,7 @@ const current = computed(() => {
 const emit = defineEmits(["onGuess", "onErr"])
 
 const tryIt = () => {
+  if(props.match.victory.value || props.match.finished.value) return;
   err.value = ""
   try {
     const w = word.value
@@ -39,6 +40,7 @@ const tryIt = () => {
 }
 
 const onType = (e) => {
+  if(props.match.victory.value || props.match.finished.value) return;
   if(e.key == "Enter") {
     tryIt();
   } else if (e.key == "Backspace") {
@@ -46,7 +48,7 @@ const onType = (e) => {
     list.pop()
     word.value = list.join("")
   } else if (e.key.length == 1 && word.value.length < props.match.word.length) {
-    word.value += e.key.replace(/\W/g,"")
+    word.value += e.key.replace(/\W/g,"").toUpperCase()
   }
 }
 

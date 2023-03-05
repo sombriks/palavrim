@@ -4,7 +4,9 @@ export const newMatch = (wordList = [], maxAttempts = 8) => {
         maxAttempts,
         wordList,
         word: wordList[parseInt(`${wordList.length * Math.random()}`)],
-        guesses: []
+        guesses: [],
+        victory: false,
+        finished: false
     }
 
     return match
@@ -35,3 +37,10 @@ export const newGuess = ({ word, wordList }, guess) => {
     }
     return { word, guess, status }
 }
+
+export const isVictory = (match) =>
+    match.guesses.filter(g => g.word === g.guess).length > 0
+
+
+export const isFinished = (match) =>
+    match.guesses.length === match.maxAttempts
