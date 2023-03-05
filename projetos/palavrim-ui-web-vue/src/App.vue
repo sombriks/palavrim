@@ -1,6 +1,12 @@
 <template>
   <header>
+    <button>
+      Rules
+    </button>
     <h1>palavrim</h1>
+    <button>
+      Stats
+    </button>
   </header>
   <main>
     <GuessPanel :match="match"></GuessPanel>
@@ -19,11 +25,11 @@ import {ref} from 'vue'
 import GuessPanel from '@/components/GuessPanel.vue'
 import StatsDialog from '@/components/StatsDialog.vue'
 import HelpDialog from '@/components/HelpDialog.vue'
-import words from '@/assets/words'
-import {isFinished, isVictory, newMatch} from "@/palavrim";
-import InputPanel from "@/components/InputPanel.vue";
+import {getCurrentMatch, isFinished, isVictory, saveCurrentMatch} from "@/palavrim";
+import InputPanel from "@/components/GuessInput.vue";
 
-const match = ref(newMatch(words))
+
+const match = ref(getCurrentMatch())
 
 const date = ref(new Date().getFullYear())
 
@@ -33,6 +39,7 @@ const addGuess = (guess) => {
   match.value.finished = isFinished(match.value)
   match.value.victory = isVictory(match.value)
   // todo game statistics
+  saveCurrentMatch(match.value)
 }
 </script>
 
@@ -43,6 +50,10 @@ footer {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+header {
+  justify-content: space-around;
 }
 
 main {

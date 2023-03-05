@@ -17,8 +17,8 @@ const err = ref("")
 
 const current = computed(() => {
   return {
-    guess:word.value.padEnd(props.match.word.length,"_"),
-    status:props.match.word.split("").map(() => {})
+    guess: word.value.padEnd(props.match.word.length,"_"),
+    status: props.match.word.split("").map(() => {})
   }
 })
 
@@ -40,7 +40,7 @@ const tryIt = () => {
 }
 
 const onType = (e) => {
-  if(props.match.victory.value || props.match.finished.value) return;
+  if(props.match.victory || props.match.finished) return;
   if(e.key == "Enter") {
     tryIt();
   } else if (e.key == "Backspace") {

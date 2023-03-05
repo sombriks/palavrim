@@ -6,17 +6,13 @@
 
 <script setup>
 import {computed} from "vue";
+import {getLetterColor} from "@/palavrim";
 
 const props = defineProps(['digit', "letters"])
 
 const bg = computed(() => {
   const status = props.letters?.flatMap(x => x).find(l => l.letter === props.digit)
-  if (status) {
-    if (status.exactMatch) return "lightgreen"
-    if (status.letterPresent) return "lightyellow"
-    if (status.letterNotPresent) return "lightsalmon"
-  }
-  return "white"
+  return getLetterColor(status)
 })
 
 const emit = defineEmits(["onLetter", "onErr"])

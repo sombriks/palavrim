@@ -6,15 +6,13 @@
 
 <script setup>
 import {computed} from "vue";
+import {getLetterColor} from "@/palavrim";
 
 const props = defineProps(["guess", "index"])
 
 const bg = computed(() => {
   const status = props.guess.status[props.index]
-  if(status?.exactMatch) return "lightgreen"
-  if(status?.letterPresent) return "lightyellow"
-  if(status?.letterNotPresent) return "lightsalmon"
-  return "white"
+  return getLetterColor(status)
 })
 </script>
 
