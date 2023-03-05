@@ -4,4 +4,10 @@ export default [
     "comer",
     "parto",
     "quais",
+    "rua",
+    "ceu",
+    "cais",
+    "carros",
+    "barco",
+    "moto"
 ]

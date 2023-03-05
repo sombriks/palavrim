@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div @click="emit('onLetter', props.digit)">
     <span>{{ props.digit }}</span>
   </div>
 </template>
@@ -18,6 +18,8 @@ const bg = computed(() => {
   }
   return "white"
 })
+
+const emit = defineEmits(["onLetter", "onErr"])
 </script>
 
 <style scoped>
@@ -38,5 +40,6 @@ div {
 
 span {
   margin: 0.9em;
+  user-select: none;
 }
 </style>

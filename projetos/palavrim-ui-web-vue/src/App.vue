@@ -5,9 +5,6 @@
   <main>
     <GuessPanel :match="match"></GuessPanel>
     <InputPanel :match="match" @onGuess="addGuess"></InputPanel>
-    <hr/>
-    <StatusLine :match="match"></StatusLine>
-    <GameKeyboard :match="match"></GameKeyboard>
     <StatsDialog></StatsDialog>
     <HelpDialog></HelpDialog>
     <br/>
@@ -20,13 +17,11 @@
 <script setup>
 import {ref} from 'vue'
 import GuessPanel from '@/components/GuessPanel.vue'
-import GameKeyboard from '@/components/GameKeyboard.vue'
 import StatsDialog from '@/components/StatsDialog.vue'
 import HelpDialog from '@/components/HelpDialog.vue'
 import words from '@/assets/words'
 import {newMatch} from "@/palavrim";
 import InputPanel from "@/components/InputPanel.vue";
-import StatusLine from "@/components/StatusLine.vue";
 
 const match = ref(newMatch(words))
 
@@ -49,9 +44,5 @@ footer {
 
 main {
   flex-direction: column;
-}
-
-hr {
-  width: 50vw;
 }
 </style>
