@@ -1,10 +1,10 @@
 <template>
   <header>
-    <button>
+    <button class="rules">
       Rules
     </button>
     <h1>palavrim</h1>
-    <button>
+    <button class="stats">
       Stats
     </button>
   </header>
@@ -52,8 +52,21 @@ footer {
   align-items: center;
 }
 
-header {
-  justify-content: space-around;
+header > button {
+  margin: 2em;
+  align-content: center;
+  border: 1px solid cadetblue;
+  min-width: 3em;
+  min-height: 3em;
+  border-radius: 0.3em;
+}
+
+.rules {
+  background-color: lightyellow;
+}
+
+.stats {
+  background-color: lightgreen;
 }
 
 main {
