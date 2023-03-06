@@ -21,3 +21,4 @@ jobs:
           firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_PALAVRIM }}'
           channelId: live
           projectId: palavrim
+          entryPoint: projetos/palavrim-ui-web-vue
