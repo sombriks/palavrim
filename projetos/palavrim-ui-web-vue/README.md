@@ -1,5 +1,12 @@
 # palavrim-ui-web-vue
 
+[X] game works
+[ ] rules and statistics
+[ ] themes
+[ ] publish on the internet
+
+---
+
 This template should help get you started developing with Vue 3 in Vite.
 
 ## Recommended IDE Setup
