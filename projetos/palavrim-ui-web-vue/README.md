@@ -5,6 +5,14 @@
 [ ] themes
 [ ] publish on the internet
 
+## firebase setup
+
+```bash
+npm i -D firebase tools
+npx firebase login
+npx firebase init hosting
+```
+
 ---
 
 This template should help get you started developing with Vue 3 in Vite.

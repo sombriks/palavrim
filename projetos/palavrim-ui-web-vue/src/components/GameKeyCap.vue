@@ -11,7 +11,9 @@ import {getLetterColor} from "@/palavrim";
 const props = defineProps(['digit', "letters"])
 
 const bg = computed(() => {
-  const status = props.letters?.flatMap(x => x).find(l => l.letter === props.digit)
+  const statuses = props.letters?.flatMap(x => x)
+      .filter(l => l.letter === props.digit) || []
+  const status = statuses.reduce((p,c) => ({...p, ...c}),{})
   return getLetterColor(status)
 })
 

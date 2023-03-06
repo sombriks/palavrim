@@ -1,4 +1,4 @@
-# Palavrim
+# [Palavrim](https://palavrim.web.app/)
 
 Algumas implementações do jogo da forca, que ficou popular por um tempo com uma
 variante chamada [wordle](https://www.nytimes.com/games/wordle/index.html).
@@ -49,5 +49,5 @@ Nesta versão vou usar [essa lista aqui](https://www.ime.usp.br/~pf/dicios/).
 
 - [X] ao menos uma versão em linha de comando
 - [X] recriar interface web
-- [ ] estrutura pra publicar em alguma nuvem
+- [X] estrutura pra publicar em alguma nuvem (firebase hosting)
 - [ ] ao menos uma api rest
