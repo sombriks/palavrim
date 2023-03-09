@@ -47,7 +47,7 @@ Nesta versão vou usar [essa lista aqui](https://www.ime.usp.br/~pf/dicios/).
 
 ## Roadmap
 
-- [X] ao menos uma versão em linha de comando
-- [X] recriar interface web
-- [X] estrutura pra publicar em alguma nuvem (firebase hosting)
+- [X] ao menos uma versão em linha de comando (java, go, node)
+- [X] recriar interface web (vue 3)
+- [X] estrutura para publicar em alguma nuvem (firebase hosting)
 - [ ] ao menos uma api rest
