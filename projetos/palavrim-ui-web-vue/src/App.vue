@@ -1,18 +1,18 @@
 <template>
   <header>
-    <button class="rules">
-      Rules
+    <button class="rules" @click="showHelpDialog = !showHelpDialog">
+      Regras
     </button>
     <h1>palavrim</h1>
-    <button class="stats">
-      Stats
+    <button class="stats" @click="showStatsDialog = !showStatsDialog">
+      Status
     </button>
   </header>
   <main>
     <GuessPanel :match="match"></GuessPanel>
     <InputPanel :match="match" @onGuess="addGuess"></InputPanel>
-    <StatsDialog></StatsDialog>
-    <HelpDialog></HelpDialog>
+    <StatsDialog v-if="showStatsDialog" @onClose="showStatsDialog = false"></StatsDialog>
+    <HelpDialog v-if="showHelpDialog" @onClose="showHelpDialog = false"></HelpDialog>
     <br/>
   </main>
   <footer>
@@ -23,11 +23,13 @@
 <script setup>
 import {ref} from 'vue'
 import GuessPanel from '@/components/GuessPanel.vue'
+import InputPanel from "@/components/GuessInput.vue";
 import StatsDialog from '@/components/StatsDialog.vue'
 import HelpDialog from '@/components/HelpDialog.vue'
 import {getCurrentMatch, isFinished, isVictory, saveCurrentMatch} from "@/palavrim";
-import InputPanel from "@/components/GuessInput.vue";
 
+const showHelpDialog = ref(false)
+const showStatsDialog = ref(false)
 
 const match = ref(getCurrentMatch())
 
