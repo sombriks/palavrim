@@ -1,11 +1,11 @@
 <template>
   <header>
     <button class="rules" @click="showHelpDialog = !showHelpDialog">
-      Regras
+      &#x1F6C8;
     </button>
     <h1>palavrim</h1>
     <button class="stats" @click="showStatsDialog = !showStatsDialog">
-      Status
+      &#x1F4CA;
     </button>
   </header>
   <main>
@@ -40,7 +40,6 @@ const addGuess = (guess) => {
   match.value.guesses = [...match.value.guesses, guess]
   match.value.finished = isFinished(match.value)
   match.value.victory = isVictory(match.value)
-  // todo game statistics
   saveCurrentMatch(match.value)
 }
 </script>
@@ -65,10 +64,12 @@ header > button {
 
 .rules {
   background-color: lightyellow;
+  font-size: 16px;
 }
 
 .stats {
   background-color: lightgreen;
+  font-size: 16px;
 }
 
 main {
