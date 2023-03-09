@@ -1,7 +1,7 @@
 <template>
   <header>
     <button class="rules" @click="showHelpDialog = !showHelpDialog">
-      &#x1F6C8;
+      &#x24D8;
     </button>
     <h1>palavrim</h1>
     <button class="stats" @click="showStatsDialog = !showStatsDialog">
