@@ -39,6 +39,7 @@ const media = computed(() =>
   position: fixed;
   width: 100vw;
   height: 100vh;
+  bottom:0px;
   display: flex;
   justify-content: center;
   align-items: center;
