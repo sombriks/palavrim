@@ -61,5 +61,6 @@ const emit = defineEmits(["onClose"])
 
 p, h2 {
   margin-left: 3em;
+  margin-right: 3em;
 }
 </style>
