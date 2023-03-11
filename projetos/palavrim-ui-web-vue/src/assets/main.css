@@ -1,0 +1,27 @@
+body {
+    color: var(--fg);
+    background-color: var(--bg);
+}
+
+/* themes for the game */
+.light {
+    --fg: black;
+    --bg: white;
+    --border: 1px solid cadetblue;
+    --match: lightgreen;
+    --present: lightyellow;
+    --notpresent: lightsalmon;
+    --blank: var(--bg);
+    --shadow: rgba(95, 158, 160, 0.6);
+}
+
+.dark {
+    --fg: white;
+    --bg: black;
+    --border: 1px solid cadetblue;
+    --match: darkgreen;
+    --present: #827000;
+    --notpresent: darksalmon;
+    --blank: var(--bg);
+    --shadow: rgba(95, 158, 160, 0.6);
+}

@@ -1,9 +1,13 @@
 <template>
   <header>
+    <a class="github" target="github" href="https://github.com/sombriks/palavrim">
+      <img src="github-mark.png"/>
+    </a>
+    <button class="theme" @click="changeTheme" v-html="thm"></button>
+    <h1>palavrim</h1>
     <button class="rules" @click="showHelpDialog = !showHelpDialog">
       &#x24D8;
     </button>
-    <h1>palavrim</h1>
     <button class="stats" @click="showStatsDialog = !showStatsDialog">
       &#x1F4CA;
     </button>
@@ -30,6 +34,7 @@ import {getCurrentMatch, isFinished, isVictory, saveCurrentMatch} from "@/palavr
 
 const showHelpDialog = ref(false)
 const showStatsDialog = ref(false)
+const thm = ref("&#x1F31E;")
 
 const match = ref(getCurrentMatch())
 
@@ -42,6 +47,17 @@ const addGuess = (guess) => {
   match.value.victory = isVictory(match.value)
   saveCurrentMatch(match.value)
 }
+
+const changeTheme = () => {
+  if(thm.value === "&#x1F312;") {
+    thm.value = "&#x1F31E;"
+    document.body.className="dark"
+  } else {
+    thm.value = "&#x1F312;"
+    document.body.className="light"
+  }
+
+}
 </script>
 
 <style scoped>
@@ -53,26 +69,49 @@ footer {
   align-items: center;
 }
 
-header > button {
-  margin: 2em;
+main {
+  flex-direction: column;
+}
+
+header > button, header > a {
+  margin: 0.5em;
   align-content: center;
-  border: 1px solid cadetblue;
+  border: var(--border);
   min-width: 3em;
   min-height: 3em;
+  max-width: 3em;
+  max-height: 3em;
   border-radius: 0.3em;
 }
 
-.rules {
-  background-color: lightyellow;
+header > a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+header > a > img {
+  width:50%;
+  height:50%;
+}
+
+.rules, .stats, .github, .theme {
   font-size: 16px;
+}
+
+.github {
+  background-color: var(--match);
+}
+
+.theme {
+  background-color: var(--blank);
+}
+
+.rules {
+  background-color: var(--present);
 }
 
 .stats {
-  background-color: lightgreen;
-  font-size: 16px;
-}
-
-main {
-  flex-direction: column;
+  background-color: var(--match);
 }
 </style>

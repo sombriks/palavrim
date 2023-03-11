@@ -1,9 +1,10 @@
 # palavrim-ui-web-vue
 
-[X] game works
-[ ] rules and statistics
-[ ] themes
-[ ] publish on the internet
+- [x] game works
+- [x] rules
+- [x] statistics
+- [x] publish on the internet
+- [X] themes (light/dark)
 
 ## firebase setup
 

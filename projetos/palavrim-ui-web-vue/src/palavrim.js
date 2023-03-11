@@ -88,10 +88,10 @@ export const newGuess = ({word}, guess) => {
 }
 
 export const getLetterColor = (status) => {
-    if (status?.exactMatch) return "lightgreen"
-    if (status?.letterPresent) return "lightyellow"
-    if (status?.letterNotPresent) return "lightsalmon"
-    return "white" // TODO return theme colors
+    if (status?.exactMatch) return "var(--match)"
+    if (status?.letterPresent) return "var(--present)"
+    if (status?.letterNotPresent) return "var(--notpresent)"
+    return "var(--blank)" // TODO return theme colors
 }
 
 export const isVictory = (match) =>

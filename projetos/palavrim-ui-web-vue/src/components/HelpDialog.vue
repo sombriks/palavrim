@@ -41,7 +41,7 @@ const emit = defineEmits(["onClose"])
 
 <style scoped>
 .shadow {
-  background-color: rgba(95, 158, 160, 0.6);
+  background-color: var(--shadow);
   position: fixed;
   width: 100vw;
   height: 100vh;
@@ -51,8 +51,8 @@ const emit = defineEmits(["onClose"])
 }
 
 .panel {
-  border: 1px solid cadetblue;
-  background-color: lightyellow;
+  border: var(--border);
+  background-color: var(--present);
   display: flex;
   justify-content: center;
   align-items: start;

@@ -27,7 +27,7 @@ div {
   display: flex;
   justify-content: center;
   align-items: center;
-  border: 1px solid cadetblue;
+  border: var(--border);
   border-radius: 0.3em;
   margin: 0.2em;
   min-width: var(--key-width);
