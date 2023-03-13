@@ -43,6 +43,9 @@ const media = computed(() =>
   display: flex;
   justify-content: center;
   align-items: center;
+  -moz-backdrop-filter: blur(3px);
+  -webkit-backdrop-filter: blur(3px);
+  backdrop-filter: blur(3px);
 }
 
 .panel {

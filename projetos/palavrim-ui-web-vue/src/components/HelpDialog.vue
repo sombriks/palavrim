@@ -49,6 +49,9 @@ const emit = defineEmits(["onClose"])
   bottom:0px;
   justify-content: center;
   align-items: center;
+  -moz-backdrop-filter: blur(3px);
+  -webkit-backdrop-filter: blur(3px);
+  backdrop-filter: blur(3px);
 }
 
 .panel {
