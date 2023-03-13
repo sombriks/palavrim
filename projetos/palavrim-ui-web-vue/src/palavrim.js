@@ -66,9 +66,9 @@ export const newGuess = ({word}, guess) => {
     word = word.trim().toUpperCase()
 
     if (word.length != guess.length)
-        throw new Error("incorrect guess size")
+        throw new Error("palavra de tamanho errado")
     if (!wordList.find(w => w.toUpperCase() === guess))
-        throw new Error(`word ${guess} not present in word list`)
+        throw new Error(`plavra ${guess} não existe na lista de palavras aceitas`)
 
     const status = []
     const letters = guess.split("")

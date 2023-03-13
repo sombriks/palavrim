@@ -5,6 +5,7 @@
 - [x] statistics
 - [x] publish on the internet
 - [X] themes (light/dark)
+- [ ] share btn
 
 ## firebase setup
 
