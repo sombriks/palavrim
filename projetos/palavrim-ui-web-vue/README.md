@@ -6,6 +6,7 @@
 - [x] publish on the internet
 - [X] themes (light/dark)
 - [ ] share btn
+- [ ] implement color for duplicate letter
 
 ## firebase setup
 
