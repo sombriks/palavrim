@@ -27,8 +27,7 @@ const text = computed(() => {
   return ""
 })
 const share = (base) => {
-  const msg = `Adivinhei a palavra!
-  ${text.value}`;
+  const msg = `Adivinhei a palavra!\n${text.value}`;
   window.open(encodeURI(`${base}?text=${msg}&url=${window.location.href}&hashtags=wordle,palavrim`))
 }
 </script>
