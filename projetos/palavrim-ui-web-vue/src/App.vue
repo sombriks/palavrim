@@ -99,7 +99,7 @@ header > a > img {
   font-size: 16px;
 }
 
-.github {
+.github, .stats {
   background-color: var(--match);
 }
 
@@ -109,9 +109,5 @@ header > a > img {
 
 .rules {
   background-color: var(--present);
-}
-
-.stats {
-  background-color: var(--match);
 }
 </style>

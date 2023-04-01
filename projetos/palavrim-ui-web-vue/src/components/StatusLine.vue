@@ -7,8 +7,8 @@
   <div v-if="props.match.finished || props.match.victory">
   <span v-if="props.match.victory">
     <i>Vitória! Palavra nova só amanhã!</i>&nbsp;
-    <button @click="share('https://mastodon.world/share')">toot</button>&nbsp;
-    <button @click="share('https://twitter.com/intent/tweet')">tweet</button>&nbsp;
+    <button class="stats" @click="share('https://mastodon.world/share')">toot</button>&nbsp;
+    <button class="stats" @click="share('https://twitter.com/intent/tweet')">tweet</button>&nbsp;
   </span>
     <span v-else><i>Derrota! A palavra era "{{ props.match.word.toUpperCase() }}"</i></span>
     <pre>{{ text }}</pre>
@@ -32,3 +32,13 @@ const share = (base) => {
   window.open(encodeURI(`${base}?text=${msg}&url=${window.location.href}&hashtags=wordle,palavrim`))
 }
 </script>
+<style scoped>
+
+.stats {
+    background-color: var(--match);
+    margin: 0.5em;
+    align-content: center;
+    border: var(--border);
+    color: var(--fg);
+}
+</style>
