@@ -1,7 +1,7 @@
 <template>
   <header>
     <a class="github" target="github" href="https://github.com/sombriks/palavrim">
-      <img src="./assets/github-mark.png"/>
+      <img src="./assets/github-mark.png" alt="gh"/>
     </a>
     <button class="theme" @click="changeTheme" v-html="thm"></button>
     <h1>palavrim</h1>
