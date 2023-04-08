@@ -26,11 +26,26 @@
 
 <script setup>
 import {ref} from 'vue'
+import { useHead } from '@vueuse/head'
+
 import GuessPanel from '@/components/GuessPanel.vue'
 import InputPanel from "@/components/GuessInput.vue";
 import StatsDialog from '@/components/StatsDialog.vue'
 import HelpDialog from '@/components/HelpDialog.vue'
 import {getCurrentMatch, isFinished, isVictory, saveCurrentMatch} from "@/palavrim";
+
+useHead({
+  title: 'Palavrim',
+  meta: [
+    {
+      name: 'description',
+      content: 'puzzle to figure out a portuguese word',
+    },{
+      name: 'keywords',
+      content: 'vue, vite, vite-ssg, ssg, game, wordle, palavrim, showcase',
+    },
+  ],
+})
 
 const showHelpDialog = ref(false)
 const showStatsDialog = ref(false)

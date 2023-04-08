@@ -14,21 +14,24 @@ export const todayIs = () =>
   new Date().toISOString().toString().split("T")[0]
 
 export const loadPalavrim = () => {
+  // there is no localStorage on server side
+  if (import.meta.env.SSR) return { matches: {} }
   let palavrim = localStorage.getItem("palavrim")
   if (palavrim) {
     try {
       palavrim = JSON.parse(palavrim)
     } catch (e) {
       console.warn("corrupt state", e)
-      palavrim = {matches: {}}
+      palavrim = { matches: {} }
     }
-  } else palavrim = {matches: {}}
+  } else palavrim = { matches: {} }
   return palavrim
 }
 
 export const newMatch = (createdAt = todayIs(), maxAttempts = 8) => {
 
   const match = {
+    createdAt,
     maxAttempts,
     word: wordList[parseInt(`${wordList.length * Math.random()}`)],
     guesses: [],
@@ -46,7 +49,7 @@ export const getCurrentMatch = () => {
   if (palavrim.matches[today]) return palavrim.matches[today]
   // else
   palavrim.matches[today] = newMatch(today)
-  localStorage.setItem("palavrim", JSON.stringify(palavrim))
+  if (!import.meta.env.SSR) localStorage.setItem("palavrim", JSON.stringify(palavrim))
 
   return palavrim.matches[today]
 }
@@ -60,7 +63,7 @@ export const saveCurrentMatch = (match) => {
   localStorage.setItem("palavrim", JSON.stringify(palavrim))
 }
 
-export const newGuess = ({word}, guess) => {
+export const newGuess = ({ word }, guess) => {
   guess = guess.trim().toUpperCase()
   word = word.trim().toUpperCase()
 
@@ -77,13 +80,13 @@ export const newGuess = ({word}, guess) => {
   while (i-- > 0) {
     const letter = letters[i]
     if (letters[i] == secret[i])
-      status.unshift({letter, exactMatch: true})
+      status.unshift({ letter, exactMatch: true })
     else if (secret.indexOf(letters[i]) > -1)
-      status.unshift({letter, letterPresent: true})
+      status.unshift({ letter, letterPresent: true })
     else
-      status.unshift({letter, letterNotPresent: true})
+      status.unshift({ letter, letterNotPresent: true })
   }
-  return {word, guess, status}
+  return { word, guess, status }
 }
 
 export const getLetterColor = (status) => {
