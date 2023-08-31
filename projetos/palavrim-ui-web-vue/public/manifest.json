@@ -15,11 +15,10 @@
   "screenshots": [],
   "icons": [
     {
-      "src": "/favicon.ico"
-    },
-    {
-      "src": "/favicon.ico",
-      "type": "image/x-icon"
+      "src": "https://palavrim.web.app/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
     }
   ],
   "shortcuts": [],
