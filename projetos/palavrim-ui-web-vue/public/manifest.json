@@ -1,0 +1,38 @@
+{
+  "background_color": "#8effbb",
+  "description": "puzzle to figure out a portuguese word",
+  "dir": "ltr",
+  "display": "fullscreen",
+  "name": "palavrim",
+  "orientation": "any",
+  "scope": "/",
+  "short_name": "palavrim",
+  "start_url": "/",
+  "theme_color": "#1f4f05",
+  "categories": [
+    "games"
+  ],
+  "screenshots": [],
+  "icons": [
+    {
+      "src": "/favicon.ico"
+    },
+    {
+      "src": "/favicon.ico",
+      "type": "image/x-icon"
+    }
+  ],
+  "shortcuts": [],
+  "id": "io.sombriks.palavrim",
+  "lang": "pt",
+  "display_override": [
+    "fullscreen",
+    "window-controls-overlay"
+  ],
+  "edge_side_panel": {
+    "preferred_width": 640
+  },
+  "share_target": {
+    "method": "GET"
+  }
+}
