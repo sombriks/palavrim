@@ -1,0 +1,8 @@
+[{
+      "relation": ["delegate_permission/common.handle_all_urls"],
+      "target": {
+        "namespace": "android_app",
+        "package_name": "app.web.palavrim.twa",
+        "sha256_cert_fingerprints": ["A8:B8:88:DE:26:0B:EB:04:36:1A:E9:67:7B:CA:8F:66:28:0C:56:58:43:1A:4A:C1:C7:B1:0E:A2:C0:57:83:90"]
+      }
+    }]
