@@ -22,6 +22,12 @@
       </p>
       <p>Isto
         <span style="display: inline-block">
+          <GuessDigit :index="0" :guess="{guess:'E', status:[{doubleLetterPresent:true}] }"></GuessDigit>
+        </span>
+        significa uma letra certa na posição errada e a letra aparece mais de uma vez
+      </p>
+      <p>Isto
+        <span style="display: inline-block">
           <GuessDigit :index="0" :guess="{guess:'O', status:[{letterNotPresent:true}] }"></GuessDigit>
         </span>
         significa uma letra errada, não tem na palavra

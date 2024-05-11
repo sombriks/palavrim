@@ -21,6 +21,8 @@
   </main>
   <footer>
     <i> &copy; sombriks {{ date }} </i>
+    <br/>
+    <a href="privacy.html">Privacidade</a>
   </footer>
 </template>
 
@@ -82,6 +84,14 @@ footer {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+footer {
+  flex-direction: column;
+}
+
+footer > a {
+  color: var(--fg)
 }
 
 main {

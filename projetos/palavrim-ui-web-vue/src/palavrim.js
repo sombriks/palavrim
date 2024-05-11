@@ -70,29 +70,40 @@ export const newGuess = ({ word }, guess) => {
   if (word.length != guess.length)
     throw new Error("palavra de tamanho errado")
   if (!wordList.find(w => w.toUpperCase() === guess))
-    throw new Error(`plavra ${guess} não existe na lista de palavras aceitas`)
+    throw new Error(`palavra ${guess} não existe na lista de palavras aceitas`)
 
   const status = []
   const letters = guess.split("")
   const secret = word.split("")
+  const occurrences = secret.reduce((acc, e) => {
+    if (!acc[e]) acc[e] = 1
+    else acc[e]++
+    return acc
+  }, {})
 
   let i = letters.length
   while (i-- > 0) {
     const letter = letters[i]
-    if (letters[i] == secret[i])
+    if (letter == secret[i]) {
       status.unshift({ letter, exactMatch: true })
-    else if (secret.indexOf(letters[i]) > -1)
-      status.unshift({ letter, letterPresent: true })
-    else
+    } else if (secret.indexOf(letter) > -1) {
+      if (occurrences[letter] > 1)
+        status.unshift({ letter, doubleLetterPresent: true })
+      else
+        status.unshift({ letter, letterPresent: true })
+    } else {
       status.unshift({ letter, letterNotPresent: true })
+    }
   }
+  console.log(status, occurrences)
   return { word, guess, status }
 }
 
 export const getLetterColor = (status) => {
   if (status?.exactMatch) return "var(--match)"
   if (status?.letterPresent) return "var(--present)"
-  if (status?.letterNotPresent) return "var(--notpresent)"
+  if (status?.doubleLetterPresent) return "var(--double-present)"
+  if (status?.letterNotPresent) return "var(--not-present)"
   return "var(--blank)"
 }
 
@@ -105,7 +116,8 @@ export const isFinished = (match) =>
 export const shareMatch = (match) => {
   return match.guesses.map(g => `${g.status.map(s => {
     if (s?.exactMatch) return "🟩"
-    if (s?.letterPresent) return "🟧";
+    if (s?.letterPresent) return "🟧"
+    if (s?.doubleLetterPresent) return "🟦"
     if (s?.letterNotPresent) return "🟥"
     return "⬜";
   }).join("")}` + "\n").join("")

@@ -10,7 +10,8 @@ body {
     --border: 1px solid cadetblue;
     --match: lightgreen;
     --present: lightyellow;
-    --notpresent: lightsalmon;
+    --double-present: lightblue;
+    --not-present: lightsalmon;
     --blank: var(--bg);
     --shadow: rgba(95, 158, 160, 0.6);
 }
@@ -21,7 +22,8 @@ body {
     --border: 1px solid cadetblue;
     --match: darkgreen;
     --present: #827000;
-    --notpresent: darksalmon;
+    --double-present: darkcyan;
+    --not-present: darksalmon;
     --blank: var(--bg);
     --shadow: rgba(95, 158, 160, 0.6);
 }
