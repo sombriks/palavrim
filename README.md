@@ -27,27 +27,34 @@ Nesta versão vou usar [essa lista aqui](https://www.ime.usp.br/~pf/dicios/).
 
 ## Passo a passo da execução
 
-- carregar lista de palavras
-- definir tamanho máximo das palavras
-- escolher palavra (aleatória ou por índice da lista)
-- preparar partida
-  - máscara da palavra (resumo das tentativas até o momento)
-  - registro de tentativas
-    - validações
-      - palpite existe na lista?
-      - palpite tem o tamanho certo?
-      - máximo de tentativas atingido?
-    - tentativa
-      - palpite da tentativa
-      - máscara de resultado
-      - letras não encontradas // TODO implementar
-    - verificação de resultado
-      - tentativas restantes
-      - palpite condiz com a palavra
+- [X] carregar lista de palavras
+- [X] definir tamanho máximo das palavras
+- [X] escolher palavra (aleatória ou por índice da lista)
+- [X] preparar partida
+  - [X] máscara da palavra (resumo das tentativas até o momento)
+  - [X] registro de tentativas
+    - [X] validações
+      - [X] palpite existe na lista?
+      - [X] palpite tem o tamanho certo?
+      - [X] máximo de tentativas atingido? (game over)
+      - [X] palavra encontrada? (game over)
+    - [X] tentativa
+      - [X] palpite da tentativa
+      - [X] máscara de resultado
+      - [X] letras não encontradas
+      - [X] letras repetidas
+      - [X] letras encontradas mas posição errada
+      - [X] letras corretas
+    - [X] verificação de resultado
+      - [X] tentativas restantes
+      - [X] palpite condiz com a palavra
 
 ## Roadmap
 
-- [X] ao menos uma versão em linha de comando (java, go, node)
+- [X] versões em linha de comando
+  - [X] java
+  - [X] node
+  - [X] go
 - [X] recriar interface web (vue 3)
 - [X] estrutura para publicar em alguma nuvem (firebase hosting)
 - [ ] ao menos uma api rest
