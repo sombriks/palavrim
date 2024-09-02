@@ -4,9 +4,11 @@
 - [x] rules
 - [x] statistics
 - [x] publish on the internet
-- [X] themes (light/dark)
-- [ ] share btn
-- [ ] implement color for duplicate letter
+- [x] themes (light/dark)
+- [x] share btn (clipboard, mastodon, twitter)
+- [x] implement color for duplicate letter
+- [ ] BlueSky share button
+- [ ] Heatmap with daily progress
 
 ## firebase setup
 
@@ -15,8 +17,6 @@ npm i -D firebase tools
 npx firebase login
 npx firebase init hosting
 ```
-
----
 
 This template should help get you started developing with Vue 3 in Vite.
 
